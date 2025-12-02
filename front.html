@@ -21,17 +21,17 @@
     function expandTags() {
         document.getElementById('hidden-tags').style.display = 'none';
         const tagData = JSON.parse(JSON.stringify({{ TopicTags }}));
-        const tagSlugs = Object.keys(tagData);
-        const tags = Object.values(tagData);
+    const tagSlugs = Object.keys(tagData);
+    const tags = Object.values(tagData);
 
-        const N = tags.length;
-        for (let i = 0; i < N; i++) {
-            const tag = document.createElement('a');
-            tag.setAttribute('class', 'btn tag-btn');
-            tag.setAttribute('href', 'https://leetcode.com/tag/' + tagSlugs[i] + '/');
-            tag.innerHTML = tags[i];
-            document.getElementById('tags').appendChild(tag);
-        }
+    const N = tags.length;
+    for (let i = 0; i < N; i++) {
+        const tag = document.createElement('a');
+        tag.setAttribute('class', 'btn tag-btn');
+        tag.setAttribute('href', 'https://leetcode.com/tag/' + tagSlugs[i] + '/');
+        tag.innerHTML = tags[i];
+        document.getElementById('tags').appendChild(tag);
+    }
     }
 </script>
 
@@ -194,7 +194,8 @@
 
     function runCode() {
         code = codeWindow.getValue();
-        window.pyodide.runPython(code);
+        var codeToRun = 'from typing import *\n' + code
+        window.pyodide.runPython(codeToRun);
     }
 </script>
 

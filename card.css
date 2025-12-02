@@ -9,6 +9,13 @@
 .card.night_mode {
     background-color: rgba(33, 33, 33, 1);
     color: white;
+
+    code {
+        background-color: #ffffff12;
+        border-color: #f7faff1f;
+        color: #eff1f6;
+    }
+
 }
 
 .tag-btn {
@@ -85,8 +92,9 @@ table td {
 .editor-title {
     font-size: 20px;
     font-family: monospace;
-    margin: 6px;
     color: white;
+    background: #262626;
+    padding: 8px;
 }
 
 .editor-buttons {
@@ -97,4 +105,33 @@ table td {
     color: #F44336;
     padding: 2px;
     border-radius: 6px;
+}
+
+code {
+    background-color: #000a2008;
+    border-color: #0000000d;
+    border-radius: 5px;
+    border-width: 1px;
+    color: #262626bf;
+    font-family: Menlo, sans-serif;
+    font-size: .75rem;
+    line-height: 1rem;
+    padding: .125rem;
+    white-space: pre-wrap;
+}
+
+.example-block {
+    border-color: #ffffff24;
+    border-left-width: 2px;
+    color: #fff9;
+    font-size: 14px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    overflow: visible;
+    padding-left: 1rem;
+}
+
+.example-block .example-io {
+    font-family: Menlo, sans-serif;
+    font-size: .85rem;
 }

@@ -56,8 +56,13 @@
     </section>
 </section>
 
-<script>
-    document.getElementById("codeSnippets").style.display = "none";
-</script>
-
 {{Solution}}
+
+<script>
+    if (Persistence.isAvailable()) {
+        var data = Persistence.getItem(`{{TitleSlug}}`)
+        if (data) {
+            codeWindow.setValue(data)
+        }
+    }
+</script>
