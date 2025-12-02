@@ -125,8 +125,16 @@
 
 </section>
 
+{{Hints}}
+
 <script>
-    var codeSnippets = `{{CodeSnippets}}`;
+    function decodeHtml(html) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
+
+    var codeSnippets = decodeHtml(`{{CodeSnippets}}`);
 
     var codeWindow = CodeMirror(document.getElementById('code_window'), {
         lineNumbers: true,
