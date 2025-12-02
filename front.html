@@ -1,0 +1,199 @@
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/atom-one-dark.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/lib/codemirror.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/theme/nord.css">
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/lib/codemirror.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/mode/python/python.js"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css"
+    integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js"
+    integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ"
+    crossorigin="anonymous"></script>
+
+<script>
+    function expandTags() {
+        document.getElementById('hidden-tags').style.display = 'none';
+        const tagData = JSON.parse(JSON.stringify({{ TopicTags }}));
+        const tagSlugs = Object.keys(tagData);
+        const tags = Object.values(tagData);
+
+        const N = tags.length;
+        for (let i = 0; i < N; i++) {
+            const tag = document.createElement('a');
+            tag.setAttribute('class', 'btn tag-btn');
+            tag.setAttribute('href', 'https://leetcode.com/tag/' + tagSlugs[i] + '/');
+            tag.innerHTML = tags[i];
+            document.getElementById('tags').appendChild(tag);
+        }
+    }
+</script>
+
+<!--Problem Title-->
+<section class="RankEditor"
+    style="margin: 0px auto; text-align: center; width: 100%; opacity: 1; transform: rotateZ(0deg);" data-width="100%"
+    data-opacity="1" data-rotate="0">
+    <section
+        style="color: rgb(228, 130, 16); padding: 3px 10px; margin-bottom: -1em; vertical-align: bottom; font-size: 1.2em;">
+        <p class="brush active" style="color: rgb(228, 130, 16); font-size: 19px; min-width: 1px;">
+            <a href="https://leetcode.com/problems/{{TitleSlug}}" style="text-decoration:none;color:rgb(228, 130, 16);">
+                {{Id}}. {{Title}}
+            </a>
+        </p>
+    </section>
+    <section style="width: 100%; display: inline-block; vertical-align: top;">
+        <section
+            style="border-top: 1px solid rgb(228, 130, 16); border-right-color: rgb(228, 130, 16); border-bottom-color: rgb(228, 130, 16); border-left-color: rgb(228, 130, 16); width: 100%;">
+        </section>
+        <section
+            style="width: 6px; height: 6px; margin-top: -3px; background-color: rgb(228, 130, 16); border-radius: 100%;">
+        </section>
+        <section
+            style="width: 6px; height: 6px; margin-top: -6px; float: right; background-color: rgb(228, 130, 16); border-radius: 100%;">
+        </section>
+    </section>
+</section>
+
+{{#Tags}}
+<div id="tags"></div>
+<a class="btn tag-btn" href="#" onclick="expandTags()" id="hidden-tags">Tags</a>
+{{/Tags}}
+
+{{Description}}
+
+<!--Code Snippets-->
+<div id="codeSnippets-container">
+    <section class="RankEditor"
+        style="margin: 0px auto; text-align: center; width: 100%; opacity: 1; transform: rotateZ(0deg);"
+        data-width="100%" data-opacity="1" data-rotate="0">
+        <section
+            style="color: rgb(228, 130, 16); padding: 3px 10px; margin-bottom: -1em; vertical-align: bottom; font-size: 1.2em;">
+            <p class="brush active" style="color: rgb(228, 130, 16); font-size: 19px; min-width: 1px;">
+                Code Editor
+            </p>
+        </section>
+        <section style="width: 100%; display: inline-block; vertical-align: top;">
+            <section
+                style="border-top: 1px solid rgb(228, 130, 16); border-right-color: rgb(228, 130, 16); border-bottom-color: rgb(228, 130, 16); border-left-color: rgb(228, 130, 16); width: 100%;">
+            </section>
+            <section
+                style="width: 6px; height: 6px; margin-top: -3px; background-color: rgb(228, 130, 16); border-radius: 100%;">
+            </section>
+            <section
+                style="width: 6px; height: 6px; margin-top: -6px; float: right; background-color: rgb(228, 130, 16); border-radius: 100%;">
+            </section>
+        </section>
+    </section>
+</div>
+
+<script>
+    // v1.1.8 - https://github.com/SimonLammer/anki-persistence/blob/584396fea9dea0921011671a47a0fdda19265e62/script.js
+    if (void 0 === window.Persistence) { var e = "github.com/SimonLammer/anki-persistence/", t = "_default"; if (window.Persistence_sessionStorage = function () { var i = !1; try { "object" == typeof window.sessionStorage && (i = !0, this.clear = function () { for (var t = 0; t < sessionStorage.length; t++) { var i = sessionStorage.key(t); 0 == i.indexOf(e) && (sessionStorage.removeItem(i), t--) } }, this.setItem = function (i, n) { void 0 == n && (n = i, i = t), sessionStorage.setItem(e + i, JSON.stringify(n)) }, this.getItem = function (i) { return void 0 == i && (i = t), JSON.parse(sessionStorage.getItem(e + i)) }, this.removeItem = function (i) { void 0 == i && (i = t), sessionStorage.removeItem(e + i) }, this.getAllKeys = function () { for (var t = [], i = Object.keys(sessionStorage), n = 0; n < i.length; n++) { var s = i[n]; 0 == s.indexOf(e) && t.push(s.substring(e.length, s.length)) } return t.sort() }) } catch (n) { } this.isAvailable = function () { return i } }, window.Persistence_windowKey = function (i) { var n = window[i], s = !1; "object" == typeof n && (s = !0, this.clear = function () { n[e] = {} }, this.setItem = function (i, s) { void 0 == s && (s = i, i = t), n[e][i] = s }, this.getItem = function (i) { return void 0 == i && (i = t), void 0 == n[e][i] ? null : n[e][i] }, this.removeItem = function (i) { void 0 == i && (i = t), delete n[e][i] }, this.getAllKeys = function () { return Object.keys(n[e]) }, void 0 == n[e] && this.clear()), this.isAvailable = function () { return s } }, window.Persistence = new Persistence_sessionStorage, Persistence.isAvailable() || (window.Persistence = new Persistence_windowKey("py")), !Persistence.isAvailable()) { var i = window.location.toString().indexOf("title"), n = window.location.toString().indexOf("main", i); i > 0 && n > 0 && n - i < 10 && (window.Persistence = new Persistence_windowKey("qt")) } }
+</script>
+
+<section class="container text-center">
+    <div class="coditer">
+        <div class="coditer-content">
+            <div class="editor-title">
+                Code
+                <span class="editor-buttons">
+                    <span id="loading_icon" style="display: none;"><i class="fa fa-spinner fa-spin"
+                            style="color: #4caf50;"></i></span>
+                    <span onclick="runCode();"><i class="fa fa-play" style="color: #4caf50;"></i></span>
+                    <span onclick="loadPyodideInBrowser();" class="start-button" id="start_button"><i
+                            class="fa fa-power-off"></i></span>
+                </span>
+            </div>
+            <div id="code_window"></div>
+        </div>
+
+        <div class="coditer-content">
+            <div class="editor-title">Output
+                <span class="editor-buttons">
+                    <span><i class="fa fa-trash"></i></span>
+                </span>
+            </div>
+            <div id="output_window"></div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    var codeSnippets = `{{CodeSnippets}}`;
+
+    var codeWindow = CodeMirror(document.getElementById('code_window'), {
+        lineNumbers: true,
+        tabSize: 2,
+        value: codeSnippets,
+        mode: 'python',
+        theme: 'nord'
+    });
+
+    var outputWindow = CodeMirror(document.getElementById('output_window'), {
+        lineNumbers: false,
+        tabSize: 2,
+        value: '',
+        mode: 'python',
+        theme: 'nord',
+    });
+
+    outputWindow.setSize(null, 100);
+
+    var pyodide;
+    var connectBtn = document.getElementById("start_button")
+
+    async function main() {
+        if (window.pyodide) {
+            return;
+        }
+
+        var loadingIcon = document.getElementById("loading_icon")
+        loadingIcon.style.display = "unset";
+
+        window.pyodide = await loadPyodide({
+            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/",
+            stdin: window.prompt,
+            stdout: (text) => {
+                var currentValue = outputWindow.getValue();
+                outputWindow.setValue(currentValue + text + '\n');
+            },
+            stderr: (text) => {
+                var currentValue = outputWindow.getValue();
+                outputWindow.setValue(currentValue + text + '\n');
+            }
+        });
+
+        console.log("Pyodide Loaded");
+        connectBtn.style.color = "#4caf50";
+        loadingIcon.style.display = "none";
+    }
+
+    function loadPyodideInBrowser() {
+        if (window.pyodide) {
+            connectBtn.style.color = "#4caf50";
+            return
+        }
+
+        main();
+    }
+
+    function runCode() {
+        code = codeWindow.getValue();
+        window.pyodide.runPython(code);
+    }
+</script>
+
+<script>
+    if (Persistence.isAvailable()) {
+        codeWindow.on("change", function (instance, changeObj) {
+            var data = Persistence.setItem(`{{TitleSlug}}`, codeWindow.getValue())
+        });
+    }
+</script>

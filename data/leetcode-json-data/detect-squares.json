@@ -1,0 +1,182 @@
+{
+    "data": {
+        "question": {
+            "questionId": "2139",
+            "questionFrontendId": "2013",
+            "boundTopicId": null,
+            "title": "Detect Squares",
+            "titleSlug": "detect-squares",
+            "content": "<p>You are given a stream of points on the X-Y plane. Design an algorithm that:</p>\n\n<ul>\n\t<li><strong>Adds</strong> new points from the stream into a data structure. <strong>Duplicate</strong> points are allowed and should be treated as different points.</li>\n\t<li>Given a query point, <strong>counts</strong> the number of ways to choose three points from the data structure such that the three points and the query point form an <strong>axis-aligned square</strong> with <strong>positive area</strong>.</li>\n</ul>\n\n<p>An <strong>axis-aligned square</strong> is a square whose edges are all the same length and are either parallel or perpendicular to the x-axis and y-axis.</p>\n\n<p>Implement the <code>DetectSquares</code> class:</p>\n\n<ul>\n\t<li><code>DetectSquares()</code> Initializes the object with an empty data structure.</li>\n\t<li><code>void add(int[] point)</code> Adds a new point <code>point = [x, y]</code> to the data structure.</li>\n\t<li><code>int count(int[] point)</code> Counts the number of ways to form <strong>axis-aligned squares</strong> with point <code>point = [x, y]</code> as described above.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/09/01/image.png\" style=\"width: 869px; height: 504px;\" />\n<pre>\n<strong>Input</strong>\n[&quot;DetectSquares&quot;, &quot;add&quot;, &quot;add&quot;, &quot;add&quot;, &quot;count&quot;, &quot;count&quot;, &quot;add&quot;, &quot;count&quot;]\n[[], [[3, 10]], [[11, 2]], [[3, 2]], [[11, 10]], [[14, 8]], [[11, 2]], [[11, 10]]]\n<strong>Output</strong>\n[null, null, null, null, 1, 0, null, 2]\n\n<strong>Explanation</strong>\nDetectSquares detectSquares = new DetectSquares();\ndetectSquares.add([3, 10]);\ndetectSquares.add([11, 2]);\ndetectSquares.add([3, 2]);\ndetectSquares.count([11, 10]); // return 1. You can choose:\n                               //   - The first, second, and third points\ndetectSquares.count([14, 8]);  // return 0. The query point cannot form a square with any points in the data structure.\ndetectSquares.add([11, 2]);    // Adding duplicate points is allowed.\ndetectSquares.count([11, 10]); // return 2. You can choose:\n                               //   - The first, second, and third points\n                               //   - The first, third, and fourth points\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>point.length == 2</code></li>\n\t<li><code>0 &lt;= x, y &lt;= 1000</code></li>\n\t<li>At most <code>3000</code> calls <strong>in total</strong> will be made to <code>add</code> and <code>count</code>.</li>\n</ul>\n",
+            "translatedTitle": null,
+            "translatedContent": null,
+            "isPaidOnly": false,
+            "difficulty": "Medium",
+            "likes": 998,
+            "dislikes": 256,
+            "isLiked": null,
+            "similarQuestions": "[]",
+            "contributors": [],
+            "langToValidPlayground": "{\"cpp\": false, \"java\": false, \"python3\": false, \"python\": false, \"javascript\": false, \"typescript\": false, \"csharp\": false, \"c\": false, \"golang\": false, \"kotlin\": false, \"swift\": false, \"rust\": false, \"ruby\": false, \"php\": false, \"dart\": false, \"scala\": false, \"elixir\": false, \"erlang\": false, \"racket\": false, \"cangjie\": false, \"bash\": false, \"html\": false, \"pythonml\": false, \"react\": false, \"vanillajs\": false, \"mysql\": false, \"mssql\": false, \"postgresql\": false, \"oraclesql\": false, \"pythondata\": false}",
+            "topicTags": [
+                {
+                    "name": "Array",
+                    "slug": "array",
+                    "translatedName": null,
+                    "__typename": "TopicTagNode"
+                },
+                {
+                    "name": "Hash Table",
+                    "slug": "hash-table",
+                    "translatedName": null,
+                    "__typename": "TopicTagNode"
+                },
+                {
+                    "name": "Design",
+                    "slug": "design",
+                    "translatedName": null,
+                    "__typename": "TopicTagNode"
+                },
+                {
+                    "name": "Counting",
+                    "slug": "counting",
+                    "translatedName": null,
+                    "__typename": "TopicTagNode"
+                }
+            ],
+            "companyTagStats": null,
+            "codeSnippets": [
+                {
+                    "lang": "C++",
+                    "langSlug": "cpp",
+                    "code": "class DetectSquares {\npublic:\n    DetectSquares() {\n        \n    }\n    \n    void add(vector<int> point) {\n        \n    }\n    \n    int count(vector<int> point) {\n        \n    }\n};\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * DetectSquares* obj = new DetectSquares();\n * obj->add(point);\n * int param_2 = obj->count(point);\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Java",
+                    "langSlug": "java",
+                    "code": "class DetectSquares {\n\n    public DetectSquares() {\n        \n    }\n    \n    public void add(int[] point) {\n        \n    }\n    \n    public int count(int[] point) {\n        \n    }\n}\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * DetectSquares obj = new DetectSquares();\n * obj.add(point);\n * int param_2 = obj.count(point);\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Python3",
+                    "langSlug": "python3",
+                    "code": "class DetectSquares:\n\n    def __init__(self):\n        \n\n    def add(self, point: List[int]) -> None:\n        \n\n    def count(self, point: List[int]) -> int:\n        \n\n\n# Your DetectSquares object will be instantiated and called as such:\n# obj = DetectSquares()\n# obj.add(point)\n# param_2 = obj.count(point)",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Python",
+                    "langSlug": "python",
+                    "code": "class DetectSquares(object):\n\n    def __init__(self):\n        \n\n    def add(self, point):\n        \"\"\"\n        :type point: List[int]\n        :rtype: None\n        \"\"\"\n        \n\n    def count(self, point):\n        \"\"\"\n        :type point: List[int]\n        :rtype: int\n        \"\"\"\n        \n\n\n# Your DetectSquares object will be instantiated and called as such:\n# obj = DetectSquares()\n# obj.add(point)\n# param_2 = obj.count(point)",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "JavaScript",
+                    "langSlug": "javascript",
+                    "code": "\nvar DetectSquares = function() {\n    \n};\n\n/** \n * @param {number[]} point\n * @return {void}\n */\nDetectSquares.prototype.add = function(point) {\n    \n};\n\n/** \n * @param {number[]} point\n * @return {number}\n */\nDetectSquares.prototype.count = function(point) {\n    \n};\n\n/** \n * Your DetectSquares object will be instantiated and called as such:\n * var obj = new DetectSquares()\n * obj.add(point)\n * var param_2 = obj.count(point)\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "TypeScript",
+                    "langSlug": "typescript",
+                    "code": "class DetectSquares {\n    constructor() {\n        \n    }\n\n    add(point: number[]): void {\n        \n    }\n\n    count(point: number[]): number {\n        \n    }\n}\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * var obj = new DetectSquares()\n * obj.add(point)\n * var param_2 = obj.count(point)\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "C#",
+                    "langSlug": "csharp",
+                    "code": "public class DetectSquares {\n\n    public DetectSquares() {\n        \n    }\n    \n    public void Add(int[] point) {\n        \n    }\n    \n    public int Count(int[] point) {\n        \n    }\n}\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * DetectSquares obj = new DetectSquares();\n * obj.Add(point);\n * int param_2 = obj.Count(point);\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "C",
+                    "langSlug": "c",
+                    "code": "\n\n\ntypedef struct {\n    \n} DetectSquares;\n\n\nDetectSquares* detectSquaresCreate() {\n    \n}\n\nvoid detectSquaresAdd(DetectSquares* obj, int* point, int pointSize) {\n    \n}\n\nint detectSquaresCount(DetectSquares* obj, int* point, int pointSize) {\n    \n}\n\nvoid detectSquaresFree(DetectSquares* obj) {\n    \n}\n\n/**\n * Your DetectSquares struct will be instantiated and called as such:\n * DetectSquares* obj = detectSquaresCreate();\n * detectSquaresAdd(obj, point, pointSize);\n \n * int param_2 = detectSquaresCount(obj, point, pointSize);\n \n * detectSquaresFree(obj);\n*/",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Go",
+                    "langSlug": "golang",
+                    "code": "type DetectSquares struct {\n    \n}\n\n\nfunc Constructor() DetectSquares {\n    \n}\n\n\nfunc (this *DetectSquares) Add(point []int)  {\n    \n}\n\n\nfunc (this *DetectSquares) Count(point []int) int {\n    \n}\n\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * obj := Constructor();\n * obj.Add(point);\n * param_2 := obj.Count(point);\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Kotlin",
+                    "langSlug": "kotlin",
+                    "code": "class DetectSquares() {\n\n    fun add(point: IntArray) {\n        \n    }\n\n    fun count(point: IntArray): Int {\n        \n    }\n\n}\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * var obj = DetectSquares()\n * obj.add(point)\n * var param_2 = obj.count(point)\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Swift",
+                    "langSlug": "swift",
+                    "code": "\nclass DetectSquares {\n\n    init() {\n        \n    }\n    \n    func add(_ point: [Int]) {\n        \n    }\n    \n    func count(_ point: [Int]) -> Int {\n        \n    }\n}\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * let obj = DetectSquares()\n * obj.add(point)\n * let ret_2: Int = obj.count(point)\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Rust",
+                    "langSlug": "rust",
+                    "code": "struct DetectSquares {\n\n}\n\n\n/** \n * `&self` means the method takes an immutable reference.\n * If you need a mutable reference, change it to `&mut self` instead.\n */\nimpl DetectSquares {\n\n    fn new() -> Self {\n        \n    }\n    \n    fn add(&self, point: Vec<i32>) {\n        \n    }\n    \n    fn count(&self, point: Vec<i32>) -> i32 {\n        \n    }\n}\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * let obj = DetectSquares::new();\n * obj.add(point);\n * let ret_2: i32 = obj.count(point);\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Ruby",
+                    "langSlug": "ruby",
+                    "code": "class DetectSquares\n    def initialize()\n        \n    end\n\n\n=begin\n    :type point: Integer[]\n    :rtype: Void\n=end\n    def add(point)\n        \n    end\n\n\n=begin\n    :type point: Integer[]\n    :rtype: Integer\n=end\n    def count(point)\n        \n    end\n\n\nend\n\n# Your DetectSquares object will be instantiated and called as such:\n# obj = DetectSquares.new()\n# obj.add(point)\n# param_2 = obj.count(point)",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "PHP",
+                    "langSlug": "php",
+                    "code": "class DetectSquares {\n    /**\n     */\n    function __construct() {\n        \n    }\n  \n    /**\n     * @param Integer[] $point\n     * @return NULL\n     */\n    function add($point) {\n        \n    }\n  \n    /**\n     * @param Integer[] $point\n     * @return Integer\n     */\n    function count($point) {\n        \n    }\n}\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * $obj = DetectSquares();\n * $obj->add($point);\n * $ret_2 = $obj->count($point);\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Dart",
+                    "langSlug": "dart",
+                    "code": "class DetectSquares {\n\n  DetectSquares() {\n    \n  }\n  \n  void add(List<int> point) {\n    \n  }\n  \n  int count(List<int> point) {\n    \n  }\n}\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * DetectSquares obj = DetectSquares();\n * obj.add(point);\n * int param2 = obj.count(point);\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Scala",
+                    "langSlug": "scala",
+                    "code": "class DetectSquares() {\n\n    def add(point: Array[Int]): Unit = {\n        \n    }\n\n    def count(point: Array[Int]): Int = {\n        \n    }\n\n}\n\n/**\n * Your DetectSquares object will be instantiated and called as such:\n * val obj = new DetectSquares()\n * obj.add(point)\n * val param_2 = obj.count(point)\n */",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Elixir",
+                    "langSlug": "elixir",
+                    "code": "defmodule DetectSquares do\n  @spec init_() :: any\n  def init_() do\n    \n  end\n\n  @spec add(point :: [integer]) :: any\n  def add(point) do\n    \n  end\n\n  @spec count(point :: [integer]) :: integer\n  def count(point) do\n    \n  end\nend\n\n# Your functions will be called as such:\n# DetectSquares.init_()\n# DetectSquares.add(point)\n# param_2 = DetectSquares.count(point)\n\n# DetectSquares.init_ will be called before every test case, in which you can do some necessary initializations.",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Erlang",
+                    "langSlug": "erlang",
+                    "code": "-spec detect_squares_init_() -> any().\ndetect_squares_init_() ->\n  .\n\n-spec detect_squares_add(Point :: [integer()]) -> any().\ndetect_squares_add(Point) ->\n  .\n\n-spec detect_squares_count(Point :: [integer()]) -> integer().\ndetect_squares_count(Point) ->\n  .\n\n\n%% Your functions will be called as such:\n%% detect_squares_init_(),\n%% detect_squares_add(Point),\n%% Param_2 = detect_squares_count(Point),\n\n%% detect_squares_init_ will be called before every test case, in which you can do some necessary initializations.",
+                    "__typename": "CodeSnippetNode"
+                },
+                {
+                    "lang": "Racket",
+                    "langSlug": "racket",
+                    "code": "(define detect-squares%\n  (class object%\n    (super-new)\n    \n    (init-field)\n    \n    ; add : (listof exact-integer?) -> void?\n    (define/public (add point)\n      )\n    ; count : (listof exact-integer?) -> exact-integer?\n    (define/public (count point)\n      )))\n\n;; Your detect-squares% object will be instantiated and called as such:\n;; (define obj (new detect-squares%))\n;; (send obj add point)\n;; (define param_2 (send obj count point))",
+                    "__typename": "CodeSnippetNode"
+                }
+            ],
+            "stats": "{\"totalAccepted\": \"100.6K\", \"totalSubmission\": \"193.6K\", \"totalAcceptedRaw\": 100621, \"totalSubmissionRaw\": 193554, \"acRate\": \"52.0%\"}",
+            "hints": [
+                "Maintain the frequency of all the points in a hash map.",
+                "Traverse the hash map and if any point has the same y-coordinate as the query point, consider this point and the query point to form one of the horizontal lines of the square."
+            ],
+            "solution": null,
+            "status": null,
+            "sampleTestCase": "[\"DetectSquares\",\"add\",\"add\",\"add\",\"count\",\"count\",\"add\",\"count\"]\n[[],[[3,10]],[[11,2]],[[3,2]],[[11,10]],[[14,8]],[[11,2]],[[11,10]]]",
+            "metaData": "{\n  \"classname\": \"DetectSquares\",\n  \"constructor\": {\n    \"params\": []\n  },\n  \"methods\": [\n    {\n      \"params\": [\n        {\n          \"type\": \"integer[]\",\n          \"name\": \"point\"\n        }\n      ],\n      \"name\": \"add\",\n      \"return\": {\n        \"type\": \"void\"\n      }\n    },\n    {\n      \"params\": [\n        {\n          \"type\": \"integer[]\",\n          \"name\": \"point\"\n        }\n      ],\n      \"name\": \"count\",\n      \"return\": {\n        \"type\": \"integer\"\n      }\n    }\n  ],\n  \"return\": {\n    \"type\": \"boolean\"\n  },\n  \"systemdesign\": true\n}",
+            "judgerAvailable": true,
+            "judgeType": "large",
+            "mysqlSchemas": [],
+            "enableRunCode": true,
+            "enableTestMode": false,
+            "envInfo": "{\"cpp\": [\"C++\", \"<p>Compiled with <code> clang 19 </code> using the latest C++ 23 standard, and <code>libstdc++</code> provided by GCC 14.</p>\\r\\n\\r\\n<p>Your code is compiled with level two optimization (<code>-O2</code>). <a href=\\\"https://github.com/google/sanitizers/wiki/AddressSanitizer\\\" target=\\\"_blank\\\">AddressSanitizer</a> is also enabled to help detect out-of-bounds and use-after-free bugs.</p>\\r\\n\\r\\n<p>Most standard library headers are already included automatically for your convenience.</p>\"], \"java\": [\"Java\", \"<p><code>OpenJDK 25</code>. Using compile arguments: <code>--enable-preview --release 25</code></p>\\r\\n\\r\\n<p>Most standard library headers are already included automatically for your convenience.</p>\\r\\n<p>Includes <code>Pair</code> class from https://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html.</p>\"], \"python\": [\"Python\", \"<p><code>Python 2.7.18</code>.</p>\\r\\n\\r\\n<p>Most libraries are already imported automatically for your convenience, such as <a href=\\\"https://docs.python.org/2/library/array.html\\\" target=\\\"_blank\\\">array</a>, <a href=\\\"https://docs.python.org/2/library/bisect.html\\\" target=\\\"_blank\\\">bisect</a>, <a href=\\\"https://docs.python.org/2/library/collections.html\\\" target=\\\"_blank\\\">collections</a>. If you need more libraries, you can import it yourself.</p>\\r\\n\\r\\n<p>For Map/TreeMap data structure, you may use <a href=\\\"http://www.grantjenks.com/docs/sortedcontainers/\\\" target=\\\"_blank\\\">sortedcontainers</a> library.</p>\\r\\n\\r\\n<p>Note that Python 2.7 <a href=\\\"https://www.python.org/dev/peps/pep-0373/\\\" target=\\\"_blank\\\">is not maintained anymore</a>. For the latest Python, please choose Python3 instead.</p>\"], \"c\": [\"C\", \"<p>Compiled with <code>gcc 14</code> using the gnu11 standard.</p>\\r\\n\\r\\n<p>Your code is compiled with level one optimization (<code>-O2</code>). <a href=\\\"https://github.com/google/sanitizers/wiki/AddressSanitizer\\\" target=\\\"_blank\\\">AddressSanitizer</a> is also enabled to help detect out-of-bounds and use-after-free bugs.</p>\\r\\n\\r\\n<p>Most standard library headers are already included automatically for your convenience.</p>\\r\\n\\r\\n<p>For hash table operations, you may use <a href=\\\"https://troydhanson.github.io/uthash/\\\" target=\\\"_blank\\\">uthash</a>. \\\"uthash.h\\\" is included by default. Below are some examples:</p>\\r\\n\\r\\n<p><b>1. Adding an item to a hash.</b>\\r\\n<pre>\\r\\nstruct hash_entry {\\r\\n    int id;            /* we'll use this field as the key */\\r\\n    char name[10];\\r\\n    UT_hash_handle hh; /* makes this structure hashable */\\r\\n};\\r\\n\\r\\nstruct hash_entry *users = NULL;\\r\\n\\r\\nvoid add_user(struct hash_entry *s) {\\r\\n    HASH_ADD_INT(users, id, s);\\r\\n}\\r\\n</pre>\\r\\n</p>\\r\\n\\r\\n<p><b>2. Looking up an item in a hash:</b>\\r\\n<pre>\\r\\nstruct hash_entry *find_user(int user_id) {\\r\\n    struct hash_entry *s;\\r\\n    HASH_FIND_INT(users, &user_id, s);\\r\\n    return s;\\r\\n}\\r\\n</pre>\\r\\n</p>\\r\\n\\r\\n<p><b>3. Deleting an item in a hash:</b>\\r\\n<pre>\\r\\nvoid delete_user(struct hash_entry *user) {\\r\\n    HASH_DEL(users, user);  \\r\\n}\\r\\n</pre>\\r\\n</p>\"], \"csharp\": [\"C#\", \"<p><a href=\\\"https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-13\\\" target=\\\"_blank\\\">C# 13</a> with .NET 9 runtime</p>\"], \"javascript\": [\"JavaScript\", \"<p><code>Node.js 22.14.0</code>.</p>\\r\\n\\r\\n<p>Your code is run with <code>--harmony</code> flag, enabling <a href=\\\"http://node.green/\\\" target=\\\"_blank\\\">new ES6 features</a>.</p>\\r\\n\\r\\n<p><a href=\\\"https://lodash.com\\\" target=\\\"_blank\\\">lodash.js</a> library is included by default.</p>\\r\\n\\r\\n<p>You may use data structures from <a href=\\\"https://datastructures-js.info/docs\\\" target=\\\"_blank\\\">datastructures-js</a> library.</p>\"], \"ruby\": [\"Ruby\", \"<p><code>Ruby 3.2</code></p>\\r\\n\\r\\n<p>Some common data structure implementations are provided in the Algorithms module: https://www.rubydoc.info/github/kanwei/algorithms/Algorithms</p>\"], \"swift\": [\"Swift\", \"<p><code>Swift 6.0</code>.</p>\\r\\n\\r\\n<p>You may use the following packages:<br/>\\r\\n<a href=\\\"https://github.com/apple/swift-algorithms/tree/1.2.0\\\" target=\\\"_blank\\\">swift-algorithms 1.2.0</a><br/>\\r\\n<a href=\\\"https://github.com/apple/swift-collections/tree/1.1.4\\\" target=\\\"_blank\\\">swift-collections 1.1.4</a><br/>\\r\\n<a href=\\\"https://github.com/apple/swift-numerics/tree/1.0.2\\\" target=\\\"_blank\\\">swift-numerics 1.0.2</a></p>\"], \"golang\": [\"Go\", \"<p><code>Go 1.23</code></p>\\r\\n<p>Support <a href=\\\"https://pkg.go.dev/github.com/emirpasic/gods@v1.18.1\\\" target=\\\"_blank\\\">https://pkg.go.dev/github.com/emirpasic/gods@v1.18.1</a> and <a href=\\\"https://pkg.go.dev/github.com/emirpasic/gods/v2@v2.0.0-alpha\\\" target=\\\"_blank\\\">https://pkg.go.dev/github.com/emirpasic/gods/v2@v2.0.0-alpha</a> library.</p>\"], \"python3\": [\"Python3\", \"<p><code>Python 3.11</code>.</p>\\r\\n\\r\\n<p>Most libraries are already imported automatically for your convenience, such as <a href=\\\"https://docs.python.org/3/library/array.html\\\" target=\\\"_blank\\\">array</a>, <a href=\\\"https://docs.python.org/3/library/bisect.html\\\" target=\\\"_blank\\\">bisect</a>, <a href=\\\"https://docs.python.org/3/library/collections.html\\\" target=\\\"_blank\\\">collections</a>. If you need more libraries, you can import it yourself.</p>\\r\\n\\r\\n<p>For Map/TreeMap data structure, you may use <a href=\\\"http://www.grantjenks.com/docs/sortedcontainers/\\\" target=\\\"_blank\\\">sortedcontainers</a> library.</p>\"], \"scala\": [\"Scala\", \"<p><code>Scala 3.3.1</code>.</p>\"], \"kotlin\": [\"Kotlin\", \"<p><code>Kotlin 2.1.10</code>.</p>\"], \"rust\": [\"Rust\", \"<p><code>Rust 1.88.0, using edition 2024.</code>. Your code will be compiled with <code>opt-level</code> 2.</p>\\r\\n\\r\\n<p>Supports <a href=\\\"https://crates.io/crates/rand\\\" target=\\\"_blank\\\">rand v0.8</a> and <a href=\\\"https://crates.io/crates/regex\\\" target=\\\"_blank\\\">regex\\u00a0v1</a> and <a href=\\\"https://crates.io/crates/itertools\\\" target=\\\"_blank\\\">itertools\\u00a0v0.14</a> from crates.io</p>\"], \"php\": [\"PHP\", \"<p><code>PHP 8.2</code>.</p>\\r\\n<p>With bcmath module</p>\"], \"typescript\": [\"Typescript\", \"<p><code>TypeScript 5.7.3, Node.js 22.14.0</code>.</p>\\r\\n\\r\\n<p>Compile Options: <code>--alwaysStrict --strictBindCallApply --strictFunctionTypes --target ES2024</code></p>\\r\\n\\r\\n<p><a href=\\\"https://lodash.com\\\" target=\\\"_blank\\\">lodash.js</a> library is included by default.</p>\\r\\n\\r\\n<p>You may use data structures from <a href=\\\"https://datastructures-js.info/docs\\\" target=\\\"_blank\\\">datastructures-js</a> library.</p>\"], \"racket\": [\"Racket\", \"<p><a href=\\\"https://docs.racket-lang.org/guide/performance.html#%28tech._c%29\\\" target=\\\"_blank\\\">Racket CS</a> v8.15</p>\\r\\n\\r\\n<p>Using <code>#lang racket</code></p>\\r\\n\\r\\n<p>Required <code>data/gvector data/queue data/order data/heap</code> automatically for your convenience</p>\"], \"erlang\": [\"Erlang\", \"Erlang/OTP 26\"], \"elixir\": [\"Elixir\", \"Elixir 1.17 with Erlang/OTP 26\"], \"dart\": [\"Dart\", \"<p>Dart 3.2. You may use package <a href=\\\"https://pub.dev/packages/collection/versions/1.18.0\\\" target=\\\"_blank\\\">collection</a></p>\\r\\n\\r\\n<p>Your code will be run directly without compiling</p>\"]}",
+            "libraryUrl": null,
+            "__typename": "QuestionNode"
+        }
+    }
+}

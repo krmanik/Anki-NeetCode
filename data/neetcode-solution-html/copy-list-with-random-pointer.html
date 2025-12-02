@@ -1,0 +1,325 @@
+<div _ngcontent-ng-c3055955716="" class="solutions-tab" style="padding: 24px;"><h1 _ngcontent-ng-c3055955716="" style="font-size: 26px; margin-top: 24px; margin-bottom: 20px;">Prerequisites</h1><app-prereq-cards _ngcontent-ng-c3055955716="" _nghost-ng-c4097940591=""><div _ngcontent-ng-c4097940591="" class="lesson-container flex-container-row"><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/5"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Singly Linked Lists</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/6"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Doubly Linked Lists</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/26"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Hash Usage</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><!-- --></div></app-prereq-cards><!-- --><!-- --><app-article _ngcontent-ng-c3055955716="" fontsize="17px"><!-- --><div class="my-article-component-container"><div><h2 id="video-explanation">Video Explanation</h2>
+<div class="video-container" style="margin-top: 20px; position: relative; overflow: hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="video" frameborder="0" src="https://www.youtube.com/embed/5Y2EiZST97Y?rel=0" title="Vimeo video player">
+</iframe>
+</div></div><!-- --><!-- --><!-- --><!-- --><!-- --></div><!-- --><!-- --></app-article><a _ngcontent-ng-c3055955716="" href="https://www.youtube.com/watch?v=5Y2EiZST97Y?rel=0" target="_blank"><br _ngcontent-ng-c3055955716=""/>View on Youtube<br _ngcontent-ng-c3055955716=""/></a><!-- --><br _ngcontent-ng-c3055955716=""/><app-article _ngcontent-ng-c3055955716="" fontsize="17px"><!-- --><div class="my-article-component-container"><div><h2 id="1-recursion--hash-map">1. Recursion + Hash Map</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">We must create a deep copy of a linked list where each node has both <code class="language-markdown" style="font-size: 14.5px">next</code> and <code class="language-markdown" style="font-size: 14.5px">random</code> pointers.<br/>The main difficulty: multiple nodes may point to the same <code class="language-markdown" style="font-size: 14.5px">random</code> node, so we must ensure each original node is copied <strong>exactly once</strong>.</p>
+<p style="font-size: 17px">A hash map helps us remember the copied version of each original node.<br/>Using recursion, we:</p>
+<ul style="font-size: 17px">
+<li>copy the current node,</li>
+<li>store it in the map,</li>
+<li>recursively copy its <code class="language-markdown" style="font-size: 14.5px">next</code>,</li>
+<li>link its <code class="language-markdown" style="font-size: 14.5px">random</code> using the map.</li>
+</ul>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>If the current node is <code class="language-markdown" style="font-size: 14.5px">None</code>, return <code class="language-markdown" style="font-size: 14.5px">None</code>.</li>
+<li>If the node is already copied (exists in the map), return the stored copy.</li>
+<li>Create a new copy node and store it in the map.</li>
+<li>Recursively copy the <code class="language-markdown" style="font-size: 14.5px">next</code> pointer.</li>
+<li>Set the <code class="language-markdown" style="font-size: 14.5px">random</code> pointer using the map.</li>
+<li>Return the copied node.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token triple-quoted-string string">"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span><span class="token builtin">map</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token keyword">def</span> <span class="token function">copyRandomList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> head<span class="token punctuation">:</span> <span class="token string">'Optional[Node]'</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token string">'Optional[Node]'</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> head <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">None</span>
+        <span class="token keyword">if</span> head <span class="token keyword">in</span> self<span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> self<span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">[</span>head<span class="token punctuation">]</span>
+
+        copy <span class="token operator">=</span> Node<span class="token punctuation">(</span>head<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">[</span>head<span class="token punctuation">]</span> <span class="token operator">=</span> copy
+        copy<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>copyRandomList<span class="token punctuation">(</span>head<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">)</span>
+        copy<span class="token punctuation">.</span>random <span class="token operator">=</span> self<span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span>head<span class="token punctuation">.</span>random<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> copy</code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<hr/>
+<h2 id="2-hash-map-two-pass">2. Hash Map (Two Pass)</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">We want to copy a linked list where each node has both <code class="language-markdown" style="font-size: 14.5px">next</code> and <code class="language-markdown" style="font-size: 14.5px">random</code> pointers.<br/>The challenge is that the <code class="language-markdown" style="font-size: 14.5px">random</code> pointer can point anywhere — forward, backward, or even <code class="language-markdown" style="font-size: 14.5px">None</code>.<br/>So we must ensure every original node is copied <strong>exactly once</strong>, and all pointers are reconnected correctly.</p>
+<p style="font-size: 17px">A simple solution:</p>
+<ul style="font-size: 17px">
+<li><strong>Pass 1:</strong> Create a copy of every node (just values), and store the mapping:<br/><code class="language-markdown" style="font-size: 14.5px">original_node → copied_node</code></li>
+<li><strong>Pass 2:</strong> Use this map to connect <code class="language-markdown" style="font-size: 14.5px">next</code> and <code class="language-markdown" style="font-size: 14.5px">random</code> pointers for each copied node.</li>
+</ul>
+<p style="font-size: 17px">This guarantees all pointers are valid and no node is duplicated.</p>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>Create a hash map <code class="language-markdown" style="font-size: 14.5px">oldToCopy</code>, mapping each original node to its copied node.<br/>Include <code class="language-markdown" style="font-size: 14.5px">None → None</code> for convenience.</li>
+<li>First pass: iterate through the original list  <ul style="font-size: 17px">
+<li>Create a copy of each node.  </li>
+<li>Store the mapping in <code class="language-markdown" style="font-size: 14.5px">oldToCopy</code>.</li>
+</ul>
+</li>
+<li>Second pass: iterate again  <ul style="font-size: 17px">
+<li>Set <code class="language-markdown" style="font-size: 14.5px">copy.next</code> using <code class="language-markdown" style="font-size: 14.5px">oldToCopy[original.next]</code>.  </li>
+<li>Set <code class="language-markdown" style="font-size: 14.5px">copy.random</code> using <code class="language-markdown" style="font-size: 14.5px">oldToCopy[original.random]</code>.</li>
+</ul>
+</li>
+<li>Return the copied version of the head using <code class="language-markdown" style="font-size: 14.5px">oldToCopy[head]</code>.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token triple-quoted-string string">"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">copyRandomList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> head<span class="token punctuation">:</span> <span class="token string">'Optional[Node]'</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token string">'Optional[Node]'</span><span class="token punctuation">:</span>
+        oldToCopy <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">}</span>
+
+        cur <span class="token operator">=</span> head
+        <span class="token keyword">while</span> cur<span class="token punctuation">:</span>
+            copy <span class="token operator">=</span> Node<span class="token punctuation">(</span>cur<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
+            oldToCopy<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">=</span> copy
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span>
+        cur <span class="token operator">=</span> head
+        <span class="token keyword">while</span> cur<span class="token punctuation">:</span>
+            copy <span class="token operator">=</span> oldToCopy<span class="token punctuation">[</span>cur<span class="token punctuation">]</span>
+            copy<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> oldToCopy<span class="token punctuation">[</span>cur<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">]</span>
+            copy<span class="token punctuation">.</span>random <span class="token operator">=</span> oldToCopy<span class="token punctuation">[</span>cur<span class="token punctuation">.</span>random<span class="token punctuation">]</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span>
+        <span class="token keyword">return</span> oldToCopy<span class="token punctuation">[</span>head<span class="token punctuation">]</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<hr/>
+<h2 id="3-hash-map-one-pass">3. Hash Map (One Pass)</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">We want to copy a linked list where every node has a <code class="language-markdown" style="font-size: 14.5px">next</code> pointer and a <code class="language-markdown" style="font-size: 14.5px">random</code> pointer.<br/>Normally we need two passes: one to create nodes, and another to connect pointers.<br/>But we can actually do both at the same time by using a hash map that <strong>automatically creates a copy node whenever we access it</strong>.</p>
+<p style="font-size: 17px">So when we say:</p>
+<ul style="font-size: 17px">
+<li><code class="language-markdown" style="font-size: 14.5px">oldToCopy[cur]</code> → gives the copied node  </li>
+<li><code class="language-markdown" style="font-size: 14.5px">oldToCopy[cur.next]</code> → gives the copy of <code class="language-markdown" style="font-size: 14.5px">cur.next</code> (created if not present)  </li>
+<li><code class="language-markdown" style="font-size: 14.5px">oldToCopy[cur.random]</code> → gives the copy of <code class="language-markdown" style="font-size: 14.5px">cur.random</code></li>
+</ul>
+<p style="font-size: 17px">This lets us fill <code class="language-markdown" style="font-size: 14.5px">val</code>, <code class="language-markdown" style="font-size: 14.5px">next</code>, and <code class="language-markdown" style="font-size: 14.5px">random</code> in <strong>one single pass</strong>.</p>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>Create a hash map <code class="language-markdown" style="font-size: 14.5px">oldToCopy</code> that returns a new empty node whenever we access a key that doesn’t exist yet.  </li>
+<li>Set <code class="language-markdown" style="font-size: 14.5px">oldToCopy[None] = None</code> so <code class="language-markdown" style="font-size: 14.5px">next</code> or <code class="language-markdown" style="font-size: 14.5px">random</code> can safely point to <code class="language-markdown" style="font-size: 14.5px">None</code>.  </li>
+<li>Traverse the list once:<ul style="font-size: 17px">
+<li>Set the copied node’s value.  </li>
+<li>Link its <code class="language-markdown" style="font-size: 14.5px">next</code> pointer using the map.  </li>
+<li>Link its <code class="language-markdown" style="font-size: 14.5px">random</code> pointer using the map.</li>
+</ul>
+</li>
+<li>Return the copied head from the hash map.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token triple-quoted-string string">"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">copyRandomList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> head<span class="token punctuation">:</span> <span class="token string">'Optional[Node]'</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token string">'Optional[Node]'</span><span class="token punctuation">:</span>
+        oldToCopy <span class="token operator">=</span> collections<span class="token punctuation">.</span>defaultdict<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> Node<span class="token punctuation">(</span><span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        oldToCopy<span class="token punctuation">[</span><span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span>
+
+        cur <span class="token operator">=</span> head
+        <span class="token keyword">while</span> cur<span class="token punctuation">:</span>
+            oldToCopy<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">.</span>val <span class="token operator">=</span> cur<span class="token punctuation">.</span>val
+            oldToCopy<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> oldToCopy<span class="token punctuation">[</span>cur<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">]</span>
+            oldToCopy<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">.</span>random <span class="token operator">=</span> oldToCopy<span class="token punctuation">[</span>cur<span class="token punctuation">.</span>random<span class="token punctuation">]</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span>
+        <span class="token keyword">return</span> oldToCopy<span class="token punctuation">[</span>head<span class="token punctuation">]</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<hr/>
+<h2 id="4-space-optimized---i">4. Space Optimized - I</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">We want to copy the list without using extra space like a hash map.<br/>The trick is to <strong>interleave copied nodes inside the original list</strong>:</p>
+<p style="font-size: 17px">Original:<br/><strong>A → B → C</strong></p>
+<p style="font-size: 17px">After interleaving:<br/><strong>A → A' → B → B' → C → C'</strong></p>
+<p style="font-size: 17px">Now every copied node (<code class="language-markdown" style="font-size: 14.5px">A'</code>, <code class="language-markdown" style="font-size: 14.5px">B'</code>, <code class="language-markdown" style="font-size: 14.5px">C'</code>) is right next to the original node, so we can easily:</p>
+<ul style="font-size: 17px">
+<li>Set <code class="language-markdown" style="font-size: 14.5px">random</code> of the copied node: <code class="language-markdown" style="font-size: 14.5px">A'.random = A.random.next</code></li>
+<li>Finally separate the two lists again.</li>
+</ul>
+<p style="font-size: 17px">This gives a perfect clone using <strong>O(1) extra space</strong>.</p>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li><p style="font-size: 17px"><strong>Interleave copy nodes</strong></p>
+<ul style="font-size: 17px">
+<li>For each original node <code class="language-markdown" style="font-size: 14.5px">A</code>, create a copy <code class="language-markdown" style="font-size: 14.5px">A'</code> and insert it right after <code class="language-markdown" style="font-size: 14.5px">A</code>.</li>
+</ul>
+</li>
+<li><p style="font-size: 17px"><strong>Assign random pointers</strong></p>
+<ul style="font-size: 17px">
+<li>For each original node <code class="language-markdown" style="font-size: 14.5px">A</code>, if <code class="language-markdown" style="font-size: 14.5px">A.random</code> exists, then <code class="language-markdown" style="font-size: 14.5px">A'.random = A.random.next</code>.</li>
+</ul>
+</li>
+<li><p style="font-size: 17px"><strong>Unweave the lists</strong></p>
+<ul style="font-size: 17px">
+<li>Restore the original list.</li>
+<li>Extract all the copy nodes into a separate new list.</li>
+</ul>
+</li>
+<li><p style="font-size: 17px">Return the head of the copied list.</p>
+</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token triple-quoted-string string">"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">copyRandomList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> head<span class="token punctuation">:</span> <span class="token string">'Optional[Node]'</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token string">'Optional[Node]'</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> head <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+        l1 <span class="token operator">=</span> head
+        <span class="token keyword">while</span> l1 <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            l2 <span class="token operator">=</span> Node<span class="token punctuation">(</span>l1<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
+            l2<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span>
+            l1<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l2
+            l1 <span class="token operator">=</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        newHead <span class="token operator">=</span> head<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        l1 <span class="token operator">=</span> head
+        <span class="token keyword">while</span> l1 <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> l1<span class="token punctuation">.</span>random <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+                l1<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">.</span>random <span class="token operator">=</span> l1<span class="token punctuation">.</span>random<span class="token punctuation">.</span><span class="token builtin">next</span>
+            l1 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        l1 <span class="token operator">=</span> head
+        <span class="token keyword">while</span> l1 <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            l2 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span>
+            l1<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span>
+            <span class="token keyword">if</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+                l2<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">.</span><span class="token builtin">next</span>
+            l1 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        <span class="token keyword">return</span> newHead</code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity:<ul style="font-size: 17px">
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> extra space.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> for the output.</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h2 id="5-space-optimized---ii">5. Space Optimized - II</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">This method also avoids extra space like a hash map, but instead of inserting copied nodes into the <strong>next</strong> pointer chain, we temporarily use the <strong>random</strong> pointer to store the copied nodes.</p>
+<p style="font-size: 17px">For every original node:</p>
+<ul style="font-size: 17px">
+<li>We create its copy and store it in the original node’s <code class="language-markdown" style="font-size: 14.5px">random</code> pointer.</li>
+<li>The copy’s <code class="language-markdown" style="font-size: 14.5px">next</code> pointer initially points to whatever the original node’s <code class="language-markdown" style="font-size: 14.5px">random</code> was pointing to.</li>
+</ul>
+<p style="font-size: 17px">This allows us to:</p>
+<ol style="font-size: 17px">
+<li><strong>Create all copies without extra memory.</strong></li>
+<li><strong>Fix the random pointers</strong> of the copied nodes using the original structure.</li>
+<li><strong>Reconnect the next pointers</strong> to build the final deep-copy list.</li>
+<li><strong>Restore the original list.</strong></li>
+</ol>
+<p style="font-size: 17px">Everything happens using only pointer manipulations — no extra arrays, no hash map.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li><p style="font-size: 17px"><strong>Create all copied nodes</strong></p>
+<ul style="font-size: 17px">
+<li>For each original node <code class="language-markdown" style="font-size: 14.5px">A</code>, create a copy <code class="language-markdown" style="font-size: 14.5px">A'</code>.</li>
+<li>Store this copy inside <code class="language-markdown" style="font-size: 14.5px">A.random</code>.</li>
+<li>Point <code class="language-markdown" style="font-size: 14.5px">A'.next = A.random_old</code>.</li>
+</ul>
+</li>
+<li><p style="font-size: 17px"><strong>Fix random pointers of copies</strong></p>
+<ul style="font-size: 17px">
+<li>For each original node <code class="language-markdown">A</code>, set:<ul style="font-size: 17px">
+<li><code class="language-markdown" style="font-size: 14.5px">A'.random = A.random_old.random'</code> (if exists).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p style="font-size: 17px"><strong>Extract the copied list and restore original list</strong></p>
+<ul style="font-size: 17px">
+<li>For each original node <code class="language-markdown">A</code>:<ul style="font-size: 17px">
+<li>Restore <code class="language-markdown" style="font-size: 14.5px">A.random = original_random</code>.</li>
+<li>Connect <code class="language-markdown" style="font-size: 14.5px">A'.next</code> to the next copied node.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p style="font-size: 17px">Return the head of the copied list (which is <code class="language-markdown" style="font-size: 14.5px">head.random</code>).</p>
+</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token triple-quoted-string string">"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">copyRandomList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> head<span class="token punctuation">:</span> <span class="token string">'Optional[Node]'</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token string">'Optional[Node]'</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> head <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+        l1 <span class="token operator">=</span> head
+        <span class="token keyword">while</span> l1<span class="token punctuation">:</span>
+            l2 <span class="token operator">=</span> Node<span class="token punctuation">(</span>l1<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
+            l2<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l1<span class="token punctuation">.</span>random
+            l1<span class="token punctuation">.</span>random <span class="token operator">=</span> l2
+            l1 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        newHead <span class="token operator">=</span> head<span class="token punctuation">.</span>random
+
+        l1 <span class="token operator">=</span> head
+        <span class="token keyword">while</span> l1<span class="token punctuation">:</span>
+            l2 <span class="token operator">=</span> l1<span class="token punctuation">.</span>random
+            l2<span class="token punctuation">.</span>random <span class="token operator">=</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">.</span>random <span class="token keyword">if</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">else</span> <span class="token boolean">None</span>
+            l1 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        l1 <span class="token operator">=</span> head
+        <span class="token keyword">while</span> l1 <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            l2 <span class="token operator">=</span> l1<span class="token punctuation">.</span>random
+            l1<span class="token punctuation">.</span>random <span class="token operator">=</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span>
+            l2<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">.</span>random <span class="token keyword">if</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">else</span> <span class="token boolean">None</span>
+            l1 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        <span class="token keyword">return</span> newHead</code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity:<ul style="font-size: 17px">
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> extra space.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> for the output.</li>
+</ul>
+</li>
+</ul>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --></div><!-- --><!-- --></app-article><!-- --><!-- --></div>

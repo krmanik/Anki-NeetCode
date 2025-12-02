@@ -1,0 +1,198 @@
+<div _ngcontent-ng-c3055955716="" class="solutions-tab" style="padding: 24px;"><h1 _ngcontent-ng-c3055955716="" style="font-size: 26px; margin-top: 24px; margin-bottom: 20px;">Prerequisites</h1><app-prereq-cards _ngcontent-ng-c3055955716="" _nghost-ng-c4097940591=""><div _ngcontent-ng-c4097940591="" class="lesson-container flex-container-row"><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/5"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Singly Linked Lists</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/advanced-algorithms/5"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Fast and Slow Pointers</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Advanced Algorithms</span></a><!-- --></div></app-prereq-cards><!-- --><!-- --><app-article _ngcontent-ng-c3055955716="" fontsize="17px"><!-- --><div class="my-article-component-container"><div><h2 id="video-explanation">Video Explanation</h2>
+<div class="video-container" style="margin-top: 20px; position: relative; overflow: hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="video" frameborder="0" src="https://www.youtube.com/embed/S5bfdUTrKLM?rel=0" title="Vimeo video player">
+</iframe>
+</div></div><!-- --><!-- --><!-- --><!-- --><!-- --></div><!-- --><!-- --></app-article><a _ngcontent-ng-c3055955716="" href="https://www.youtube.com/watch?v=S5bfdUTrKLM?rel=0" target="_blank"><br _ngcontent-ng-c3055955716=""/>View on Youtube<br _ngcontent-ng-c3055955716=""/></a><!-- --><br _ngcontent-ng-c3055955716=""/><app-article _ngcontent-ng-c3055955716="" fontsize="17px"><!-- --><div class="my-article-component-container"><div><h2 id="1-brute-force">1. Brute Force</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">To reorder the linked list in the pattern:</p>
+<p style="font-size: 17px"><strong>L0 → Ln → L1 → L(n−1) → L2 → ...</strong></p>
+<p style="font-size: 17px">A straightforward approach is to <strong>store all nodes in an array</strong>.<br/>Once stored, we can easily access nodes from both the start and end using two pointers.<br/>By alternately linking nodes from the front (<code class="language-markdown" style="font-size: 14.5px">i</code>) and back (<code class="language-markdown" style="font-size: 14.5px">j</code>), we can reshape the list in the required order.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>Traverse the linked list and push every node into an array.</li>
+<li>Initialize two pointers:<ul style="font-size: 17px">
+<li><code class="language-markdown" style="font-size: 14.5px">i = 0</code> (start)</li>
+<li><code class="language-markdown" style="font-size: 14.5px">j = len(nodes) - 1</code> (end)</li>
+</ul>
+</li>
+<li>While <code class="language-markdown">i &lt; j</code>:<ul style="font-size: 17px">
+<li>Link <code class="language-markdown" style="font-size: 14.5px">nodes[i].next</code> to <code class="language-markdown" style="font-size: 14.5px">nodes[j]</code>; increment <code class="language-markdown" style="font-size: 14.5px">i</code>.</li>
+<li>If <code class="language-markdown" style="font-size: 14.5px">i &gt;= j</code>, break the loop.</li>
+<li>Link <code class="language-markdown" style="font-size: 14.5px">nodes[j].next</code> to <code class="language-markdown" style="font-size: 14.5px">nodes[i]</code>; decrement <code class="language-markdown" style="font-size: 14.5px">j</code>.</li>
+</ul>
+</li>
+<li>After the loop, set <code class="language-markdown" style="font-size: 14.5px">nodes[i].next = None</code> to terminate the list.</li>
+<li>The reordered list is constructed in-place.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">reorderList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> head<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> head<span class="token punctuation">:</span>
+            <span class="token keyword">return</span>
+
+        nodes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        cur <span class="token operator">=</span> head
+        <span class="token keyword">while</span> cur<span class="token punctuation">:</span>
+            nodes<span class="token punctuation">.</span>append<span class="token punctuation">(</span>cur<span class="token punctuation">)</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        i<span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>nodes<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number" style="font-size: 17px;">1</span>
+        <span class="token keyword">while</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span>
+            nodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> nodes<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+            i <span class="token operator">+=</span> <span class="token number" style="font-size: 17px;">1</span>
+            <span class="token keyword">if</span> i <span class="token operator">&gt;=</span> j<span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+            nodes<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> nodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            j <span class="token operator">-=</span> <span class="token number" style="font-size: 17px;">1</span>
+
+        nodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> <span class="token boolean">None</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<hr/>
+<h2 id="2-recursion">2. Recursion</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">This recursive approach reorders the list by pairing nodes from the <strong>front</strong> and <strong>back</strong> during the recursion unwind phase.</p>
+<p style="font-size: 17px">The idea is:</p>
+<ul style="font-size: 17px">
+<li>Move to the end of the list using recursion.</li>
+<li>On the way back up (unwinding), connect the current node from the end (<code class="language-markdown" style="font-size: 14.5px">cur</code>) to the corresponding node from the front (<code class="language-markdown" style="font-size: 14.5px">root</code>).</li>
+<li>Advance the front pointer (<code class="language-markdown" style="font-size: 14.5px">root</code>) step-by-step as recursion unwinds.</li>
+<li>Stop when the pointers meet or cross.</li>
+</ul>
+<p style="font-size: 17px">Recursion naturally processes the list from back to front, making it convenient to match front and back nodes without using extra lists.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>Define a recursive function <code class="language-markdown">rec(root, cur)</code>:<ul style="font-size: 17px">
+<li><code class="language-markdown" style="font-size: 14.5px">cur</code> moves to the end of the list via recursion.</li>
+<li><code class="language-markdown" style="font-size: 14.5px">root</code> marks the current front node during unwinding.</li>
+</ul>
+</li>
+<li>In the base case:<ul style="font-size: 17px">
+<li>If <code class="language-markdown" style="font-size: 14.5px">cur</code> is <code class="language-markdown" style="font-size: 14.5px">None</code>, return the front pointer (<code class="language-markdown" style="font-size: 14.5px">root</code>).</li>
+</ul>
+</li>
+<li>Recursively call <code class="language-markdown" style="font-size: 14.5px">rec</code> on <code class="language-markdown" style="font-size: 14.5px">cur.next</code> to reach the tail.</li>
+<li>During unwinding:<ul style="font-size: 17px">
+<li>If <code class="language-markdown" style="font-size: 14.5px">root</code> meets or crosses <code class="language-markdown" style="font-size: 14.5px">cur</code>, set <code class="language-markdown" style="font-size: 14.5px">cur.next = None</code> to finish and stop further links.</li>
+<li>Otherwise:<ul style="font-size: 17px">
+<li>Temporarily save <code class="language-markdown" style="font-size: 14.5px">root.next</code>.</li>
+<li>Link <code class="language-markdown" style="font-size: 14.5px">root.next → cur</code>.</li>
+<li>Link <code class="language-markdown" style="font-size: 14.5px">cur.next → temp</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Return the next node (<code class="language-markdown" style="font-size: 14.5px">temp</code>) as the updated front pointer.</li>
+<li>Start recursion with <code class="language-markdown" style="font-size: 14.5px">rec(head, head.next)</code>.</li>
+</ol>
+<p style="font-size: 17px">This reorders the list in place without extra storage.</p>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">reorderList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> head<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+
+        <span class="token keyword">def</span> <span class="token function">rec</span><span class="token punctuation">(</span>root<span class="token punctuation">:</span> ListNode<span class="token punctuation">,</span> cur<span class="token punctuation">:</span> ListNode<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> ListNode<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token keyword">not</span> cur<span class="token punctuation">:</span>
+                <span class="token keyword">return</span> root
+
+            root <span class="token operator">=</span> rec<span class="token punctuation">(</span>root<span class="token punctuation">,</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token keyword">not</span> root<span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+            tmp <span class="token operator">=</span> <span class="token boolean">None</span>
+            <span class="token keyword">if</span> root <span class="token operator">==</span> cur <span class="token keyword">or</span> root<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">==</span> cur<span class="token punctuation">:</span>
+                cur<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> <span class="token boolean">None</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                tmp <span class="token operator">=</span> root<span class="token punctuation">.</span><span class="token builtin">next</span>
+                root<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> cur
+                cur<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> tmp
+
+            <span class="token keyword">return</span> tmp
+
+        head <span class="token operator">=</span> rec<span class="token punctuation">(</span>head<span class="token punctuation">,</span> head<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">)</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<hr/>
+<h2 id="3-reverse-and-merge">3. Reverse And Merge</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">To reorder the list into the pattern<br/><strong>L1 → Ln → L2 → Ln−1 → L3 → Ln−2 → ...</strong>,<br/>we can break the problem into <strong>three simple steps</strong>:</p>
+<ol style="font-size: 17px">
+<li><p style="font-size: 17px"><strong>Find the middle</strong> of the linked list using slow &amp; fast pointers.<br/>This splits the list into two halves.</p>
+</li>
+<li><p style="font-size: 17px"><strong>Reverse the second half</strong> of the list.<br/>Doing this makes it easy to merge nodes from the front and back alternately.</p>
+</li>
+<li><p style="font-size: 17px"><strong>Merge the two halves</strong> one-by-one:<br/>Take one node from the first half, then one from the reversed second half, and repeat.</p>
+</li>
+</ol>
+<p style="font-size: 17px">This method is clean, intuitive, and uses only <code class="language-markdown" style="font-size: 14.5px">O(1)</code> extra space.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li><p style="font-size: 17px"><strong>Find the middle</strong>:</p>
+<ul style="font-size: 17px">
+<li>Use <code class="language-markdown" style="font-size: 14.5px">slow</code> and <code class="language-markdown" style="font-size: 14.5px">fast</code> pointers.</li>
+<li>When <code class="language-markdown" style="font-size: 14.5px">fast</code> reaches the end, <code class="language-markdown" style="font-size: 14.5px">slow</code> will be at the midpoint.</li>
+</ul>
+</li>
+<li><p style="font-size: 17px"><strong>Reverse the second half</strong>:</p>
+<ul style="font-size: 17px">
+<li>Start from <code class="language-markdown" style="font-size: 14.5px">slow.next</code>.</li>
+<li>Reverse it using the standard linked-list reversal approach.</li>
+</ul>
+</li>
+<li><p style="font-size: 17px"><strong>Merge the two lists</strong>:</p>
+<ul style="font-size: 17px">
+<li>Take a node from the first half.</li>
+<li>Take a node from the reversed second half.</li>
+<li>Continue until the second half is exhausted.</li>
+</ul>
+</li>
+</ol>
+<p style="font-size: 17px">This produces the desired reordered list in-place with no extra memory.</p>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">reorderList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> head<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        slow<span class="token punctuation">,</span> fast <span class="token operator">=</span> head<span class="token punctuation">,</span> head<span class="token punctuation">.</span><span class="token builtin">next</span>
+        <span class="token keyword">while</span> fast <span class="token keyword">and</span> fast<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">:</span>
+            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span><span class="token builtin">next</span>
+            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        second <span class="token operator">=</span> slow<span class="token punctuation">.</span><span class="token builtin">next</span>
+        prev <span class="token operator">=</span> slow<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> <span class="token boolean">None</span>
+        <span class="token keyword">while</span> second<span class="token punctuation">:</span>
+            tmp <span class="token operator">=</span> second<span class="token punctuation">.</span><span class="token builtin">next</span>
+            second<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> prev
+            prev <span class="token operator">=</span> second
+            second <span class="token operator">=</span> tmp
+
+        first<span class="token punctuation">,</span> second <span class="token operator">=</span> head<span class="token punctuation">,</span> prev
+        <span class="token keyword">while</span> second<span class="token punctuation">:</span>
+            tmp1<span class="token punctuation">,</span> tmp2 <span class="token operator">=</span> first<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">,</span> second<span class="token punctuation">.</span><span class="token builtin">next</span>
+            first<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> second
+            second<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> tmp1
+            first<span class="token punctuation">,</span> second <span class="token operator">=</span> tmp1<span class="token punctuation">,</span> tmp2</code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --></div><!-- --><!-- --></app-article><!-- --><!-- --></div>

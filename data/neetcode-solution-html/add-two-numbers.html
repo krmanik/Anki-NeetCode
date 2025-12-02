@@ -1,0 +1,164 @@
+<div _ngcontent-ng-c3055955716="" class="solutions-tab" style="padding: 24px;"><h1 _ngcontent-ng-c3055955716="" style="font-size: 26px; margin-top: 24px; margin-bottom: 20px;">Prerequisites</h1><app-prereq-cards _ngcontent-ng-c3055955716="" _nghost-ng-c4097940591=""><div _ngcontent-ng-c4097940591="" class="lesson-container flex-container-row"><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/5"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Singly Linked Lists</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><!-- --></div></app-prereq-cards><!-- --><!-- --><app-article _ngcontent-ng-c3055955716="" fontsize="17px"><!-- --><div class="my-article-component-container"><div><h2 id="video-explanation">Video Explanation</h2>
+<div class="video-container" style="margin-top: 20px; position: relative; overflow: hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="video" frameborder="0" src="https://www.youtube.com/embed/wgFPrzTjm7s?rel=0" title="Vimeo video player">
+</iframe>
+</div></div><!-- --><!-- --><!-- --><!-- --><!-- --></div><!-- --><!-- --></app-article><a _ngcontent-ng-c3055955716="" href="https://www.youtube.com/watch?v=wgFPrzTjm7s?rel=0" target="_blank"><br _ngcontent-ng-c3055955716=""/>View on Youtube<br _ngcontent-ng-c3055955716=""/></a><!-- --><br _ngcontent-ng-c3055955716=""/><app-article _ngcontent-ng-c3055955716="" fontsize="17px"><!-- --><div class="my-article-component-container"><div><h2 id="1-recursion">1. Recursion</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">We add the two linked lists exactly like adding two numbers on paper.</p>
+<p style="font-size: 17px">Each node contains one digit, and since the lists are stored in <strong>reverse order</strong>, the head contains the ones place — making addition easy.<br/>At every step:</p>
+<ol style="font-size: 17px">
+<li>Take a digit from <code class="language-markdown" style="font-size: 14.5px">l1</code> (or 0 if it’s finished)</li>
+<li>Take a digit from <code class="language-markdown" style="font-size: 14.5px">l2</code> (or 0 if it’s finished)</li>
+<li>Add them with the incoming <code class="language-markdown" style="font-size: 14.5px">carry</code></li>
+<li>Create a new node for the current digit (<code class="language-markdown" style="font-size: 14.5px">sum % 10</code>)</li>
+<li>Pass the new <code class="language-markdown" style="font-size: 14.5px">carry</code> (<code class="language-markdown" style="font-size: 14.5px">sum // 10</code>) forward using <strong>recursion</strong></li>
+</ol>
+<p style="font-size: 17px">The recursion naturally processes digits from left to right and stops only when:</p>
+<ul style="font-size: 17px">
+<li>both lists are fully processed <strong>and</strong></li>
+<li>no carry remains.</li>
+</ul>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li><p style="font-size: 17px">Define a recursive function <code class="language-markdown" style="font-size: 14.5px">add(l1, l2, carry)</code>:</p>
+<ul style="font-size: 17px">
+<li>If <code class="language-markdown" style="font-size: 14.5px">l1</code>, <code class="language-markdown" style="font-size: 14.5px">l2</code> are both <code class="language-markdown" style="font-size: 14.5px">None</code> and <code class="language-markdown" style="font-size: 14.5px">carry</code> is <code class="language-markdown" style="font-size: 14.5px">0</code>, return <code class="language-markdown" style="font-size: 14.5px">None</code>.</li>
+<li>Extract:<ul style="font-size: 17px">
+<li><code class="language-markdown" style="font-size: 14.5px">v1 = l1.val</code> if <code class="language-markdown" style="font-size: 14.5px">l1</code> exists, else <code class="language-markdown" style="font-size: 14.5px">0</code></li>
+<li><code class="language-markdown" style="font-size: 14.5px">v2 = l2.val</code> if <code class="language-markdown" style="font-size: 14.5px">l2</code> exists, else <code class="language-markdown" style="font-size: 14.5px">0</code></li>
+</ul>
+</li>
+<li>Compute:<ul style="font-size: 17px">
+<li><code class="language-markdown" style="font-size: 14.5px">total = v1 + v2 + carry</code></li>
+<li><code class="language-markdown" style="font-size: 14.5px">carry, digit = divmod(total, 10)</code></li>
+</ul>
+</li>
+<li>Recursively compute the next node using:<ul style="font-size: 17px">
+<li><code class="language-markdown" style="font-size: 14.5px">l1.next</code> if exists  </li>
+<li><code class="language-markdown" style="font-size: 14.5px">l2.next</code> if exists  </li>
+<li>updated <code class="language-markdown" style="font-size: 14.5px">carry</code></li>
+</ul>
+</li>
+<li>Return a node with value <code class="language-markdown" style="font-size: 14.5px">digit</code> whose <code class="language-markdown" style="font-size: 14.5px">next</code> is the recursive result.</li>
+</ul>
+</li>
+<li><p style="font-size: 17px">In <code class="language-markdown" style="font-size: 14.5px">addTwoNumbers</code>, call:</p>
+<ul style="font-size: 17px">
+<li>return add(l1, l2, 0)</li>
+</ul>
+</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> l1<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">,</span> l2<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">,</span> carry<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> l1 <span class="token keyword">and</span> <span class="token keyword">not</span> l2 <span class="token keyword">and</span> carry <span class="token operator">==</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+        v1 <span class="token operator">=</span> l1<span class="token punctuation">.</span>val <span class="token keyword">if</span> l1 <span class="token keyword">else</span> <span class="token number" style="font-size: 17px;">0</span>
+        v2 <span class="token operator">=</span> l2<span class="token punctuation">.</span>val <span class="token keyword">if</span> l2 <span class="token keyword">else</span> <span class="token number" style="font-size: 17px;">0</span>
+
+        carry<span class="token punctuation">,</span> val <span class="token operator">=</span> <span class="token builtin">divmod</span><span class="token punctuation">(</span>v1 <span class="token operator">+</span> v2 <span class="token operator">+</span> carry<span class="token punctuation">,</span> <span class="token number" style="font-size: 17px;">10</span><span class="token punctuation">)</span>
+
+        next_node <span class="token operator">=</span> self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>
+            l1<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">if</span> l1 <span class="token keyword">else</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+            l2<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">if</span> l2 <span class="token keyword">else</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+            carry
+        <span class="token punctuation">)</span>
+        <span class="token keyword">return</span> ListNode<span class="token punctuation">(</span>val<span class="token punctuation">,</span> next_node<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">addTwoNumbers</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> l1<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">,</span> l2<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>l1<span class="token punctuation">,</span> l2<span class="token punctuation">,</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">)</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m + n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m + n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<blockquote>
+<p>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> is the length of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">l1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">1</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is the length of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">l2</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">2</span></span></span></span>.</p>
+</blockquote>
+<hr/>
+<h2 id="2-iteration">2. Iteration</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">We simulate normal addition the same way we do on paper — digit by digit.</p>
+<p style="font-size: 17px">The linked lists store numbers in <strong>reverse order</strong>, so the first nodes represent the 1’s place.<br/>This makes addition straightforward:</p>
+<ul style="font-size: 17px">
+<li>Add the two digits.</li>
+<li>Add the carry from the previous step.</li>
+<li>Save the resulting digit (<code class="language-markdown" style="font-size: 14.5px">sum % 10</code>) into a new node.</li>
+<li>Update the carry (<code class="language-markdown" style="font-size: 14.5px">sum // 10</code>).</li>
+<li>Move both pointers forward.</li>
+</ul>
+<p style="font-size: 17px">We continue until <strong>both lists are finished AND no carry remains</strong>.<br/>A dummy node helps us easily build and return the final linked list.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li><p style="font-size: 17px">Create:</p>
+<ul style="font-size: 17px">
+<li>a <code class="language-markdown" style="font-size: 14.5px">dummy</code> node (to build the answer)</li>
+<li>a pointer <code class="language-markdown" style="font-size: 14.5px">cur</code> pointing to <code class="language-markdown" style="font-size: 14.5px">dummy</code></li>
+<li>an integer <code class="language-markdown" style="font-size: 14.5px">carry = 0</code></li>
+</ul>
+</li>
+<li><p style="font-size: 17px">Loop while <code class="language-markdown" style="font-size: 14.5px">l1</code> exists, <code class="language-markdown" style="font-size: 14.5px">l2</code> exists, or <code class="language-markdown" style="font-size: 14.5px">carry</code> is non-zero:</p>
+<ul style="font-size: 17px">
+<li>Read the current digit of each list (<code class="language-markdown" style="font-size: 14.5px">0</code> if that list already ended)</li>
+<li>Compute<br/><code class="language-markdown" style="font-size: 14.5px">sum = v1 + v2 + carry</code></li>
+<li>Update:<br/><code class="language-markdown" style="font-size: 14.5px">carry = sum // 10</code><br/><code class="language-markdown" style="font-size: 14.5px">digit = sum % 10</code></li>
+<li>Append a new node containing <code class="language-markdown" style="font-size: 14.5px">digit</code></li>
+<li>Move the pointers <code class="language-markdown" style="font-size: 14.5px">l1</code>, <code class="language-markdown" style="font-size: 14.5px">l2</code>, and <code class="language-markdown" style="font-size: 14.5px">cur</code> forward</li>
+</ul>
+</li>
+<li><p style="font-size: 17px">Return <code class="language-markdown" style="font-size: 14.5px">dummy.next</code> (the head of the result list)</p>
+</li>
+</ol>
+<p style="font-size: 17px">This ensures correct handling of:</p>
+<ul style="font-size: 17px">
+<li>different lengths of input lists  </li>
+<li>leftover carry  </li>
+<li>building the result in one pass</li>
+</ul>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">addTwoNumbers</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> l1<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">,</span> l2<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        dummy <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        cur <span class="token operator">=</span> dummy
+
+        carry <span class="token operator">=</span> <span class="token number" style="font-size: 17px;">0</span>
+        <span class="token keyword">while</span> l1 <span class="token keyword">or</span> l2 <span class="token keyword">or</span> carry<span class="token punctuation">:</span>
+            v1 <span class="token operator">=</span> l1<span class="token punctuation">.</span>val <span class="token keyword">if</span> l1 <span class="token keyword">else</span> <span class="token number" style="font-size: 17px;">0</span>
+            v2 <span class="token operator">=</span> l2<span class="token punctuation">.</span>val <span class="token keyword">if</span> l2 <span class="token keyword">else</span> <span class="token number" style="font-size: 17px;">0</span>
+
+            <span class="token comment"># new digit</span>
+            val <span class="token operator">=</span> v1 <span class="token operator">+</span> v2 <span class="token operator">+</span> carry
+            carry <span class="token operator">=</span> val <span class="token operator">//</span> <span class="token number" style="font-size: 17px;">10</span>
+            val <span class="token operator">=</span> val <span class="token operator">%</span> <span class="token number" style="font-size: 17px;">10</span>
+            cur<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> ListNode<span class="token punctuation">(</span>val<span class="token punctuation">)</span>
+
+            <span class="token comment"># update ptrs</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span>
+            l1 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">if</span> l1 <span class="token keyword">else</span> <span class="token boolean">None</span>
+            l2 <span class="token operator">=</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token keyword">if</span> l2 <span class="token keyword">else</span> <span class="token boolean">None</span>
+
+        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span><span class="token builtin">next</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m + n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity:<ul style="font-size: 17px">
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> extra space.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mi>m</mi><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(max(m, n))</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">))</span></span></span></span> for the output list.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> is the length of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">l1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">1</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is the length of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">l2</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">2</span></span></span></span>.</p>
+</blockquote>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --></div><!-- --><!-- --></app-article><!-- --><!-- --></div>

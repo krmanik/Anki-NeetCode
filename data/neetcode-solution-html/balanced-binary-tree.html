@@ -1,0 +1,194 @@
+<div _ngcontent-ng-c3055955716="" class="solutions-tab" style="padding: 24px;"><h1 _ngcontent-ng-c3055955716="" style="font-size: 26px; margin-top: 24px; margin-bottom: 20px;">Prerequisites</h1><app-prereq-cards _ngcontent-ng-c3055955716="" _nghost-ng-c4097940591=""><div _ngcontent-ng-c4097940591="" class="lesson-container flex-container-row"><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/16"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Binary Tree</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/19"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Depth-First Search</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><!-- --></div></app-prereq-cards><!-- --><!-- --><app-article _ngcontent-ng-c3055955716="" fontsize="17px"><!-- --><div class="my-article-component-container"><div><h2 id="video-explanation">Video Explanation</h2>
+<div class="video-container" style="margin-top: 20px; position: relative; overflow: hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="video" frameborder="0" src="https://www.youtube.com/embed/QfJsau0ItOY?rel=0" title="Vimeo video player">
+</iframe>
+</div></div><!-- --><!-- --><!-- --><!-- --><!-- --></div><!-- --><!-- --></app-article><a _ngcontent-ng-c3055955716="" href="https://www.youtube.com/watch?v=QfJsau0ItOY?rel=0" target="_blank"><br _ngcontent-ng-c3055955716=""/>View on Youtube<br _ngcontent-ng-c3055955716=""/></a><!-- --><br _ngcontent-ng-c3055955716=""/><app-article _ngcontent-ng-c3055955716="" fontsize="17px"><!-- --><div class="my-article-component-container"><div><h2 id="1-brute-force">1. Brute Force</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">A tree is balanced if <strong>every node’s left and right subtree heights differ by at most 1</strong>.</p>
+<p style="font-size: 17px">The brute-force approach directly follows the definition:</p>
+<ul style="font-size: 17px">
+<li>For every node, compute the height of its left subtree.</li>
+<li>Compute the height of its right subtree.</li>
+<li>Check if their difference is ≤ 1.</li>
+<li>Recursively repeat this check for all nodes.</li>
+</ul>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>If the current node is <code class="language-markdown" style="font-size: 14.5px">null</code>, the subtree is balanced.</li>
+<li>Compute:<ul style="font-size: 17px">
+<li><code class="language-markdown" style="font-size: 14.5px">leftHeight = height(left subtree)</code></li>
+<li><code class="language-markdown" style="font-size: 14.5px">rightHeight = height(right subtree)</code></li>
+</ul>
+</li>
+<li>If <code class="language-markdown" style="font-size: 14.5px">abs(leftHeight - rightHeight) &gt; 1</code>, return <code class="language-markdown" style="font-size: 14.5px">False</code>.</li>
+<li>Recursively check if:<ul style="font-size: 17px">
+<li>left subtree is balanced</li>
+<li>right subtree is balanced</li>
+</ul>
+</li>
+<li>If all checks pass, return <code class="language-markdown" style="font-size: 14.5px">True</code>.</li>
+</ol>
+<p style="font-size: 17px">Height function:</p>
+<ul style="font-size: 17px">
+<li>If node is null → return 0  </li>
+<li>Otherwise → <code class="language-markdown" style="font-size: 14.5px">1 + max(height(left), height(right))</code></li>
+</ul>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for a binary tree node.</span>
+<span class="token comment"># class TreeNode:</span>
+<span class="token comment">#     def __init__(self, val=0, left=None, right=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.left = left</span>
+<span class="token comment">#         self.right = right</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">isBalanced</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> root<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>TreeNode<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> root<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+        left <span class="token operator">=</span> self<span class="token punctuation">.</span>height<span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
+        right <span class="token operator">=</span> self<span class="token punctuation">.</span>height<span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>left <span class="token operator">-</span> right<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>isBalanced<span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span> <span class="token keyword">and</span> self<span class="token punctuation">.</span>isBalanced<span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">height</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> root<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>TreeNode<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> root<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token number" style="font-size: 17px;">0</span>
+
+        <span class="token keyword">return</span> <span class="token number" style="font-size: 17px;">1</span> <span class="token operator">+</span> <span class="token builtin">max</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>height<span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>height<span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n ^ 2)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<hr/>
+<h2 id="2-depth-first-search">2. Depth First Search</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">The brute-force solution wastes time by repeatedly recomputing subtree heights.<br/>We fix this by doing <strong>one DFS that returns two things at once</strong> for every node:</p>
+<ol style="font-size: 17px">
+<li><strong>Is the subtree balanced?</strong> (<code class="language-markdown" style="font-size: 14.5px">True</code>/<code class="language-markdown" style="font-size: 14.5px">False</code>)</li>
+<li><strong>What is its height?</strong></li>
+</ol>
+<p style="font-size: 17px">This way, each subtree is processed only once.<br/>If at any node the height difference &gt; 1, we mark it as unbalanced and stop worrying about deeper levels.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>Write a DFS function that:<ul style="font-size: 17px">
+<li>Returns <code class="language-markdown" style="font-size: 14.5px">[isBalanced, height]</code>.</li>
+</ul>
+</li>
+<li>For each node:<ul style="font-size: 17px">
+<li>Recursively get results from left and right children.</li>
+<li>A node is balanced if:<ul style="font-size: 17px">
+<li>Left subtree is balanced  </li>
+<li>Right subtree is balanced  </li>
+<li>Height difference ≤ 1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Height of the current node = <code class="language-markdown" style="font-size: 14.5px">1 + max(leftHeight, rightHeight)</code></li>
+<li>Run DFS on the root and return the <code class="language-markdown" style="font-size: 14.5px">isBalanced</code> value.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for a binary tree node.</span>
+<span class="token comment"># class TreeNode:</span>
+<span class="token comment">#     def __init__(self, val=0, left=None, right=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.left = left</span>
+<span class="token comment">#         self.right = right</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">isBalanced</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> root<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>TreeNode<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+        <span class="token keyword">def</span> <span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token keyword">not</span> root<span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">]</span>
+
+            left<span class="token punctuation">,</span> right <span class="token operator">=</span> dfs<span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">,</span> dfs<span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
+            balanced <span class="token operator">=</span> left<span class="token punctuation">[</span><span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">]</span> <span class="token keyword">and</span> right<span class="token punctuation">[</span><span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">]</span> <span class="token keyword">and</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>left<span class="token punctuation">[</span><span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> right<span class="token punctuation">[</span><span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number" style="font-size: 17px;">1</span>
+            <span class="token keyword">return</span> <span class="token punctuation">[</span>balanced<span class="token punctuation">,</span> <span class="token number" style="font-size: 17px;">1</span> <span class="token operator">+</span> <span class="token builtin">max</span><span class="token punctuation">(</span>left<span class="token punctuation">[</span><span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> right<span class="token punctuation">[</span><span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+        <span class="token keyword">return</span> dfs<span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">]</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(h)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">h</span><span class="mclose">)</span></span></span></span><ul style="font-size: 17px">
+<li>Best Case (<a href="https://www.geeksforgeeks.org/balanced-binary-tree/">balanced tree</a>): <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(log(n))</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">))</span></span></span></span></li>
+<li>Worst Case (<a href="https://www.geeksforgeeks.org/introduction-to-degenerate-binary-tree/">degenerate tree</a>): <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is the number of nodes in the tree and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span> is the height of the tree.</p>
+</blockquote>
+<hr/>
+<h2 id="3-iterative-dfs">3. Iterative DFS</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">The recursive DFS solution computes height and balance in one postorder traversal.<br/>This iterative version does <strong>the same thing</strong>, but simulates recursion using a stack.</p>
+<p style="font-size: 17px">The idea:</p>
+<ul style="font-size: 17px">
+<li>We must visit each node <strong>after</strong> its children (postorder).</li>
+<li>Once both children of a node are processed, we already know their heights.</li>
+<li>Then we:<ol style="font-size: 17px">
+<li>Check if the height difference ≤ 1  </li>
+<li>Save the node’s height (<code class="language-markdown" style="font-size: 14.5px">1 + max(left, right)</code>)</li>
+</ol>
+</li>
+</ul>
+<p style="font-size: 17px">If any node is unbalanced, return <code class="language-markdown" style="font-size: 14.5px">False</code> immediately.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>Use a stack to simulate postorder traversal.</li>
+<li>Use a dictionary/map (<code class="language-markdown" style="font-size: 14.5px">depths</code>) to store the height of each visited node.</li>
+<li>For each node:<ul style="font-size: 17px">
+<li>Traverse left until possible.</li>
+<li>When left is done, try right.</li>
+<li>When both children are done:<ul style="font-size: 17px">
+<li>Get their heights from <code class="language-markdown" style="font-size: 14.5px">depths</code>.</li>
+<li>If the difference &gt; 1 → tree is unbalanced → return <code class="language-markdown" style="font-size: 14.5px">False</code>.</li>
+<li>Compute current node height and store it.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>If the traversal completes without violations → return <code class="language-markdown" style="font-size: 14.5px">True</code>.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for a binary tree node.</span>
+<span class="token comment"># class TreeNode:</span>
+<span class="token comment">#     def __init__(self, val=0, left=None, right=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.left = left</span>
+<span class="token comment">#         self.right = right</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">isBalanced</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> root<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        node <span class="token operator">=</span> root
+        last <span class="token operator">=</span> <span class="token boolean">None</span>
+        depths <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+        <span class="token keyword">while</span> stack <span class="token keyword">or</span> node<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> node<span class="token punctuation">:</span>
+                stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+                node <span class="token operator">=</span> node<span class="token punctuation">.</span>left
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                node <span class="token operator">=</span> stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">]</span>
+                <span class="token keyword">if</span> <span class="token keyword">not</span> node<span class="token punctuation">.</span>right <span class="token keyword">or</span> last <span class="token operator">==</span> node<span class="token punctuation">.</span>right<span class="token punctuation">:</span>
+                    stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    left <span class="token operator">=</span> depths<span class="token punctuation">.</span>get<span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">,</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">)</span>
+                    right <span class="token operator">=</span> depths<span class="token punctuation">.</span>get<span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">,</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">)</span>
+
+                    <span class="token keyword">if</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>left <span class="token operator">-</span> right<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">:</span>
+                        <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+                    depths<span class="token punctuation">[</span>node<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number" style="font-size: 17px;">1</span> <span class="token operator">+</span> <span class="token builtin">max</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
+                    last <span class="token operator">=</span> node
+                    node <span class="token operator">=</span> <span class="token boolean">None</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    node <span class="token operator">=</span> node<span class="token punctuation">.</span>right
+
+        <span class="token keyword">return</span> <span class="token boolean">True</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --></div><!-- --><!-- --></app-article><!-- --><!-- --></div>

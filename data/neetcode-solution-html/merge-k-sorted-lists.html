@@ -1,0 +1,464 @@
+<div _ngcontent-ng-c3055955716="" class="solutions-tab" style="padding: 24px;"><h1 _ngcontent-ng-c3055955716="" style="font-size: 26px; margin-top: 24px; margin-bottom: 20px;">Prerequisites</h1><app-prereq-cards _ngcontent-ng-c3055955716="" _nghost-ng-c4097940591=""><div _ngcontent-ng-c4097940591="" class="lesson-container flex-container-row"><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/5"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Singly Linked Lists</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/11"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Merge Sort</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/23"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Heap Properties</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><a _ngcontent-ng-c4097940591="" class="card menu-card my-card" href="/courses/dsa-for-beginners/24"><div _ngcontent-ng-c4097940591="" class="flex-container-row" style="justify-content: space-between; align-items: start;"><span _ngcontent-ng-c4097940591="" style="margin-right: 10px; font-weight: 600;">Push and Pop</span><span _ngcontent-ng-c4097940591=""><label _ngcontent-ng-c4097940591="" class="b-checkbox checkbox" style="margin: 0px;"><input _ngcontent-ng-c4097940591="" type="checkbox"/><span _ngcontent-ng-c4097940591="" class="check is-success" style="height: 0.9em; width: 0.9em;"></span></label></span></div><span _ngcontent-ng-c4097940591="" class="course-name">Data Structures &amp; Algorithms for Beginners</span></a><!-- --></div></app-prereq-cards><!-- --><!-- --><app-article _ngcontent-ng-c3055955716="" fontsize="17px"><!-- --><div class="my-article-component-container"><div><h2 id="video-explanation">Video Explanation</h2>
+<div class="video-container" style="margin-top: 20px; position: relative; overflow: hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="video" frameborder="0" src="https://www.youtube.com/embed/q5a5OiGbT6Q?rel=0" title="Vimeo video player">
+</iframe>
+</div></div><!-- --><!-- --><!-- --><!-- --><!-- --></div><!-- --><!-- --></app-article><a _ngcontent-ng-c3055955716="" href="https://www.youtube.com/watch?v=q5a5OiGbT6Q?rel=0" target="_blank"><br _ngcontent-ng-c3055955716=""/>View on Youtube<br _ngcontent-ng-c3055955716=""/></a><!-- --><br _ngcontent-ng-c3055955716=""/><app-article _ngcontent-ng-c3055955716="" fontsize="17px"><!-- --><div class="my-article-component-container"><div><h2 id="1-brute-force">1. Brute Force</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">The simplest way to merge all linked lists is to <strong>ignore the list structure</strong>, collect every value, sort them, and then rebuild a single sorted linked list.<br/>This doesn’t use any clever merging logic — it is purely based on gathering and sorting.<br/>It’s easy to implement but not efficient because sorting dominates the runtime.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>Create an empty list <code class="language-markdown" style="font-size: 14.5px">nodes</code>.</li>
+<li>For each linked list:<ul style="font-size: 17px">
+<li>Traverse it and append every node’s value to <code class="language-markdown" style="font-size: 14.5px">nodes</code>.</li>
+</ul>
+</li>
+<li>Sort the <code class="language-markdown" style="font-size: 14.5px">nodes</code> list.</li>
+<li>Create a new linked list:<ul style="font-size: 17px">
+<li>Use a dummy head.</li>
+<li>For each value in the sorted list, create a new node and attach it.</li>
+</ul>
+</li>
+<li>Return the head of the new merged linked list.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">mergeKLists</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> lists<span class="token punctuation">:</span> List<span class="token punctuation">[</span>Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        nodes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> lst <span class="token keyword">in</span> lists<span class="token punctuation">:</span>
+            <span class="token keyword">while</span> lst<span class="token punctuation">:</span>
+                nodes<span class="token punctuation">.</span>append<span class="token punctuation">(</span>lst<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
+                lst <span class="token operator">=</span> lst<span class="token punctuation">.</span><span class="token builtin">next</span>
+        nodes<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        res <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">)</span>
+        cur <span class="token operator">=</span> res
+        <span class="token keyword">for</span> node <span class="token keyword">in</span> nodes<span class="token punctuation">:</span>
+            cur<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> ListNode<span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token builtin">next</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<hr/>
+<h2 id="2-iteration">2. Iteration</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">We repeatedly pick the <strong>smallest head node</strong> among all the lists and attach it to our result list.<br/>At every step:</p>
+<ul style="font-size: 17px">
+<li>Look at the first node of each non-empty list.</li>
+<li>Choose the one with the smallest value.</li>
+<li>Move that list’s pointer forward.</li>
+<li>Append the chosen node to our merged list.</li>
+</ul>
+<p style="font-size: 17px">This is similar to merging k sorted arrays by always picking the smallest available element.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>Create a dummy node to build the merged list.</li>
+<li>Set a pointer <code class="language-markdown" style="font-size: 14.5px">cur</code> to the dummy.</li>
+<li>Repeat:<ul style="font-size: 17px">
+<li>Search through all lists to find the list whose current node has the smallest value.</li>
+<li>If no list has remaining nodes (all are empty), stop.</li>
+<li>Attach the smallest node to <code class="language-markdown" style="font-size: 14.5px">cur.next</code>.</li>
+<li>Move <code class="language-markdown" style="font-size: 14.5px">cur</code> forward.</li>
+<li>Move the chosen list’s pointer to its next node.</li>
+</ul>
+</li>
+<li>Return the merged list starting from <code class="language-markdown" style="font-size: 14.5px">dummy.next</code>.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">mergeKLists</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> lists<span class="token punctuation">:</span> List<span class="token punctuation">[</span>Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        res <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">)</span>
+        cur <span class="token operator">=</span> res
+
+        <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+            minNode <span class="token operator">=</span> <span class="token operator">-</span><span class="token number" style="font-size: 17px;">1</span>
+            <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>lists<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> <span class="token keyword">not</span> lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                    <span class="token keyword">continue</span>
+                <span class="token keyword">if</span> minNode <span class="token operator">==</span> <span class="token operator">-</span><span class="token number" style="font-size: 17px;">1</span> <span class="token keyword">or</span> lists<span class="token punctuation">[</span>minNode<span class="token punctuation">]</span><span class="token punctuation">.</span>val <span class="token operator">&gt;</span> lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>val<span class="token punctuation">:</span>
+                    minNode <span class="token operator">=</span> i
+
+            <span class="token keyword">if</span> minNode <span class="token operator">==</span> <span class="token operator">-</span><span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+            cur<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> lists<span class="token punctuation">[</span>minNode<span class="token punctuation">]</span>
+            lists<span class="token punctuation">[</span>minNode<span class="token punctuation">]</span> <span class="token operator">=</span> lists<span class="token punctuation">[</span>minNode<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">next</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token builtin">next</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n * k)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<blockquote>
+<p>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> is the total number of lists and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is the total number of nodes across <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> lists.</p>
+</blockquote>
+<hr/>
+<h2 id="3-merge-lists-one-by-one">3. Merge Lists One By One</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">Instead of merging all k lists at once, we can <strong>merge them one by one</strong>.</p>
+<ul style="font-size: 17px">
+<li>First merge list 0 and list 1 → get a sorted list.</li>
+<li>Then merge that result with list 2.</li>
+<li>Then merge that result with list 3.</li>
+<li>Repeat until all lists are merged.</li>
+</ul>
+<p style="font-size: 17px">Each merge operation is just like the standard <strong>“merge two sorted linked lists”</strong> problem:</p>
+<ul style="font-size: 17px">
+<li>Compare the heads.</li>
+<li>Attach the smaller one.</li>
+<li>Move that list’s pointer forward.</li>
+<li>Continue until one list is empty, then attach the rest of the other list.</li>
+</ul>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>If the list of lists is empty, return <code class="language-markdown" style="font-size: 14.5px">null</code> (or equivalent).</li>
+<li>For each list from index <code class="language-markdown">1</code> to <code class="language-markdown">k - 1</code>:<ul style="font-size: 17px">
+<li>Merge <code class="language-markdown" style="font-size: 14.5px">lists[i - 1]</code> and <code class="language-markdown" style="font-size: 14.5px">lists[i]</code> into a single sorted list.</li>
+<li>Store the merged result back into <code class="language-markdown" style="font-size: 14.5px">lists[i]</code>.</li>
+</ul>
+</li>
+<li>After the loop, <code class="language-markdown" style="font-size: 14.5px">lists[k - 1]</code> will contain the fully merged list.</li>
+<li>Return <code class="language-markdown" style="font-size: 14.5px">lists[k - 1]</code>.</li>
+</ol>
+<p style="font-size: 17px"><strong>Merging two lists (<code class="language-markdown" style="font-size: 14.5px">mergeList(l1, l2)</code>):</strong></p>
+<ol style="font-size: 17px">
+<li>Create a dummy node and a <code class="language-markdown" style="font-size: 14.5px">tail</code> pointer starting at the dummy.</li>
+<li>While both <code class="language-markdown">l1</code> and <code class="language-markdown">l2</code> are non-empty:<ul style="font-size: 17px">
+<li>Compare <code class="language-markdown" style="font-size: 14.5px">l1.val</code> and <code class="language-markdown" style="font-size: 14.5px">l2.val</code>.</li>
+<li>Attach the smaller node to <code class="language-markdown" style="font-size: 14.5px">tail.next</code>.</li>
+<li>Move that list’s pointer forward.</li>
+<li>Move <code class="language-markdown" style="font-size: 14.5px">tail</code> forward.</li>
+</ul>
+</li>
+<li>If one list still has remaining nodes, attach it to <code class="language-markdown" style="font-size: 14.5px">tail.next</code>.</li>
+<li>Return <code class="language-markdown" style="font-size: 14.5px">dummy.next</code> as the merged head.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">mergeKLists</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> lists<span class="token punctuation">:</span> List<span class="token punctuation">[</span>Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lists<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lists<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>mergeList<span class="token punctuation">(</span>lists<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> lists<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">mergeList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> l1<span class="token punctuation">,</span> l2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        dummy <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        tail <span class="token operator">=</span> dummy
+
+        <span class="token keyword">while</span> l1 <span class="token keyword">and</span> l2<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> l1<span class="token punctuation">.</span>val <span class="token operator">&lt;</span> l2<span class="token punctuation">.</span>val<span class="token punctuation">:</span>
+                tail<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l1
+                l1 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                tail<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l2
+                l2 <span class="token operator">=</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span>
+            tail <span class="token operator">=</span> tail<span class="token punctuation">.</span><span class="token builtin">next</span>
+        <span class="token keyword">if</span> l1<span class="token punctuation">:</span>
+            tail<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l1
+        <span class="token keyword">if</span> l2<span class="token punctuation">:</span>
+            tail<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l2
+        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span><span class="token builtin">next</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n * k)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<blockquote>
+<p>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> is the total number of lists and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is the total number of nodes across <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> lists.</p>
+</blockquote>
+<hr/>
+<h2 id="4-heap">4. Heap</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">We want to always pick the <strong>smallest current node</strong> among all <code class="language-markdown" style="font-size: 14.5px">k</code> lists as efficiently as possible.</p>
+<p style="font-size: 17px">Instead of scanning all heads every time (which is slow), we can use a <strong>min-heap (priority queue)</strong>:</p>
+<ul style="font-size: 17px">
+<li>Push the head of each non-empty list into the heap.</li>
+<li>The heap always gives us the node with the <strong>smallest value</strong> on top.</li>
+<li>We pop that node, attach it to our result list, and then push its <code class="language-markdown" style="font-size: 14.5px">next</code> node (if it exists) into the heap.</li>
+<li>Repeat until the heap is empty.</li>
+</ul>
+<p style="font-size: 17px">This way, at every step we choose the globally smallest node in <strong>O(log k)</strong> time, where <code class="language-markdown" style="font-size: 14.5px">k</code> is the number of lists.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>Create a min-heap (priority queue).</li>
+<li>For each non-empty linked list:<ul style="font-size: 17px">
+<li>Push its head node into the heap (keyed by node value).</li>
+</ul>
+</li>
+<li>Create a dummy node to start the result list, and a pointer <code class="language-markdown" style="font-size: 14.5px">cur</code> pointing to it.</li>
+<li>While the heap is not empty:<ul style="font-size: 17px">
+<li>Pop the node with the smallest value from the heap.</li>
+<li>Attach this node to <code class="language-markdown" style="font-size: 14.5px">cur.next</code>, and move <code class="language-markdown" style="font-size: 14.5px">cur</code> forward.</li>
+<li>If this node has a <code class="language-markdown" style="font-size: 14.5px">next</code> node, push that <code class="language-markdown" style="font-size: 14.5px">next</code> node into the heap.</li>
+</ul>
+</li>
+<li>When the heap is empty, all nodes have been merged in sorted order.</li>
+<li>Return <code class="language-markdown" style="font-size: 14.5px">dummy.next</code> as the head of the merged list.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">NodeWrapper</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> node<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>node <span class="token operator">=</span> node
+
+    <span class="token keyword">def</span> <span class="token function">__lt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>node<span class="token punctuation">.</span>val <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>node<span class="token punctuation">.</span>val
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">mergeKLists</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> lists<span class="token punctuation">:</span> List<span class="token punctuation">[</span>Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lists<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+        res <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">)</span>
+        cur <span class="token operator">=</span> res
+        minHeap <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+        <span class="token keyword">for</span> lst <span class="token keyword">in</span> lists<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> lst <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+                heapq<span class="token punctuation">.</span>heappush<span class="token punctuation">(</span>minHeap<span class="token punctuation">,</span> NodeWrapper<span class="token punctuation">(</span>lst<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">while</span> minHeap<span class="token punctuation">:</span>
+            node_wrapper <span class="token operator">=</span> heapq<span class="token punctuation">.</span>heappop<span class="token punctuation">(</span>minHeap<span class="token punctuation">)</span>
+            cur<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> node_wrapper<span class="token punctuation">.</span>node
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+            <span class="token keyword">if</span> node_wrapper<span class="token punctuation">.</span>node<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">:</span>
+                heapq<span class="token punctuation">.</span>heappush<span class="token punctuation">(</span>minHeap<span class="token punctuation">,</span> NodeWrapper<span class="token punctuation">(</span>node_wrapper<span class="token punctuation">.</span>node<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token builtin">next</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log k)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(k)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<blockquote>
+<p>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> is the total number of lists and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is the total number of nodes across <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> lists.</p>
+</blockquote>
+<hr/>
+<h2 id="5-divide-and-conquer-recursion">5. Divide And Conquer (Recursion)</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">Instead of merging all k lists at once or one by one in order, we can use a <strong>divide and conquer</strong> strategy, similar to how <strong>merge sort</strong> works.</p>
+<p style="font-size: 17px">Idea:</p>
+<ul style="font-size: 17px">
+<li>Split the list of linked lists into two halves.</li>
+<li>Recursively merge the left half into one sorted list.</li>
+<li>Recursively merge the right half into one sorted list.</li>
+<li>Finally, merge these two sorted lists into a single sorted list.</li>
+</ul>
+<p style="font-size: 17px">By always merging <strong>pairs</strong> of lists, we reduce the total work compared to merging k lists sequentially.<br/>Each merge of two lists is linear in their total length, and we do about <code class="language-markdown" style="font-size: 14.5px">log k</code> levels of merging.</p>
+<p style="font-size: 17px">This makes the approach both clean and efficient.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li><p style="font-size: 17px"><strong>Base Cases</strong></p>
+<ul style="font-size: 17px">
+<li>If the input list <code class="language-markdown" style="font-size: 14.5px">lists</code> is empty, return <code class="language-markdown" style="font-size: 14.5px">null</code>.</li>
+<li>Use a recursive function <code class="language-markdown">divide(lists, l, r)</code>:<ul style="font-size: 17px">
+<li>If <code class="language-markdown" style="font-size: 14.5px">l &gt; r</code>, return <code class="language-markdown" style="font-size: 14.5px">null</code>.</li>
+<li>If <code class="language-markdown" style="font-size: 14.5px">l == r</code>, return <code class="language-markdown" style="font-size: 14.5px">lists[l]</code> (only one list to return).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p style="font-size: 17px"><strong>Divide Step</strong></p>
+<ul style="font-size: 17px">
+<li>Compute <code class="language-markdown" style="font-size: 14.5px">mid = (l + r) // 2</code>.</li>
+<li>Recursively compute:<ul style="font-size: 17px">
+<li><code class="language-markdown" style="font-size: 14.5px">left = divide(lists, l, mid)</code></li>
+<li><code class="language-markdown" style="font-size: 14.5px">right = divide(lists, mid + 1, r)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p style="font-size: 17px"><strong>Conquer Step (merge two lists)</strong></p>
+<ul style="font-size: 17px">
+<li>Merge <code class="language-markdown">left</code> and <code class="language-markdown">right</code> using the standard <strong>merge two sorted linked lists</strong> routine:<ul style="font-size: 17px">
+<li>Create a dummy node and use a <code class="language-markdown" style="font-size: 14.5px">curr</code> pointer.</li>
+<li>While both lists are non-empty:<ul style="font-size: 17px">
+<li>Attach the smaller node to <code class="language-markdown" style="font-size: 14.5px">curr.next</code>.</li>
+<li>Move that list’s pointer forward.</li>
+<li>Move <code class="language-markdown" style="font-size: 14.5px">curr</code> forward.</li>
+</ul>
+</li>
+<li>Attach any remaining nodes from either list.</li>
+</ul>
+</li>
+<li>Return the merged list.</li>
+</ul>
+</li>
+<li><p style="font-size: 17px"><strong>Final Answer</strong></p>
+<ul style="font-size: 17px">
+<li>Call <code class="language-markdown" style="font-size: 14.5px">divide(lists, 0, len(lists) - 1)</code> and return the resulting list.</li>
+</ul>
+</li>
+</ol>
+<p style="font-size: 17px">This approach efficiently merges k sorted linked lists in a structured, recursive way.</p>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">mergeKLists</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> lists<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> lists <span class="token keyword">or</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lists<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">None</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>divide<span class="token punctuation">(</span>lists<span class="token punctuation">,</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lists<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">divide</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> lists<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> l <span class="token operator">&gt;</span> r<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">None</span>
+        <span class="token keyword">if</span> l <span class="token operator">==</span> r<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> lists<span class="token punctuation">[</span>l<span class="token punctuation">]</span>
+
+        mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number" style="font-size: 17px;">2</span>
+        left <span class="token operator">=</span> self<span class="token punctuation">.</span>divide<span class="token punctuation">(</span>lists<span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">)</span>
+        right <span class="token operator">=</span> self<span class="token punctuation">.</span>divide<span class="token punctuation">(</span>lists<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>conquer<span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">conquer</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> l1<span class="token punctuation">,</span> l2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        dummy <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">)</span>
+        curr <span class="token operator">=</span> dummy
+
+        <span class="token keyword">while</span> l1 <span class="token keyword">and</span> l2<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> l1<span class="token punctuation">.</span>val <span class="token operator">&lt;=</span> l2<span class="token punctuation">.</span>val<span class="token punctuation">:</span>
+                curr<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l1
+                l1 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                curr<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l2
+                l2 <span class="token operator">=</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span>
+            curr <span class="token operator">=</span> curr<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        <span class="token keyword">if</span> l1<span class="token punctuation">:</span>
+            curr<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l1
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            curr<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l2
+
+        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span><span class="token builtin">next</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log k)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log k)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<blockquote>
+<p>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> is the total number of lists and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is the total number of nodes across <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> lists.</p>
+</blockquote>
+<hr/>
+<h2 id="6-divide-and-conquer-iteration">6. Divide And Conquer (Iteration)</h2>
+<h3 id="intuition">Intuition</h3>
+<p style="font-size: 17px">This is the <strong>same idea as divide and conquer</strong>, but done <strong>iteratively</strong> instead of using recursion.</p>
+<p style="font-size: 17px">We repeatedly merge the lists in <strong>pairs</strong>:</p>
+<ul style="font-size: 17px">
+<li>In one pass:<ul style="font-size: 17px">
+<li>Merge list 0 and list 1 → get M0  </li>
+<li>Merge list 2 and list 3 → get M1  </li>
+<li>Merge list 4 and list 5 → get M2  </li>
+<li>… and so on.</li>
+</ul>
+</li>
+<li>After this pass, we have fewer lists (about half as many).</li>
+<li>Repeat this process on the new list of merged lists until only <strong>one</strong> list remains.</li>
+</ul>
+<p style="font-size: 17px">Each pairwise merge is just the usual <strong>merge of two sorted linked lists</strong>.<br/>By always merging lists two at a time, the total work is efficient and structured, similar to the merge step in merge sort.</p>
+<hr/>
+<h3 id="algorithm">Algorithm</h3>
+<ol style="font-size: 17px">
+<li>If <code class="language-markdown" style="font-size: 14.5px">lists</code> is empty, return <code class="language-markdown" style="font-size: 14.5px">null</code>.</li>
+<li>While the number of lists is greater than 1:<ul style="font-size: 17px">
+<li>Create an empty list <code class="language-markdown" style="font-size: 14.5px">mergedLists</code>.</li>
+<li>Loop over <code class="language-markdown">lists</code> in steps of 2:<ul style="font-size: 17px">
+<li>Let <code class="language-markdown" style="font-size: 14.5px">l1 = lists[i]</code>.</li>
+<li>Let <code class="language-markdown" style="font-size: 14.5px">l2 = lists[i + 1]</code> if it exists, otherwise <code class="language-markdown" style="font-size: 14.5px">None</code>.</li>
+<li>Merge <code class="language-markdown" style="font-size: 14.5px">l1</code> and <code class="language-markdown" style="font-size: 14.5px">l2</code> using <code class="language-markdown" style="font-size: 14.5px">mergeList</code> and append the result to <code class="language-markdown" style="font-size: 14.5px">mergedLists</code>.</li>
+</ul>
+</li>
+<li>Set <code class="language-markdown" style="font-size: 14.5px">lists = mergedLists</code>.</li>
+</ul>
+</li>
+<li>When the loop ends, <code class="language-markdown" style="font-size: 14.5px">lists[0]</code> is the fully merged sorted list. Return it.</li>
+</ol>
+<p style="font-size: 17px"><strong>Merging two lists (<code class="language-markdown" style="font-size: 14.5px">mergeList(l1, l2)</code>):</strong></p>
+<ol style="font-size: 17px">
+<li>Create a dummy node and a <code class="language-markdown" style="font-size: 14.5px">tail</code> pointer pointing to it.</li>
+<li>While both <code class="language-markdown">l1</code> and <code class="language-markdown">l2</code> are non-empty:<ul style="font-size: 17px">
+<li>Attach the smaller of <code class="language-markdown" style="font-size: 14.5px">l1</code> and <code class="language-markdown" style="font-size: 14.5px">l2</code> to <code class="language-markdown" style="font-size: 14.5px">tail.next</code>.</li>
+<li>Move the chosen list’s pointer forward.</li>
+<li>Move <code class="language-markdown" style="font-size: 14.5px">tail</code> forward.</li>
+</ul>
+</li>
+<li>Attach any remaining nodes from <code class="language-markdown" style="font-size: 14.5px">l1</code> or <code class="language-markdown" style="font-size: 14.5px">l2</code> to <code class="language-markdown" style="font-size: 14.5px">tail.next</code>.</li>
+<li>Return <code class="language-markdown" style="font-size: 14.5px">dummy.next</code> as the merged head.</li>
+</ol>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --><app-code-tabs _nghost-ng-c3350875783=""><div _ngcontent-ng-c3350875783="" class="code-solution-tabs-container" style="margin-top: 2rem; margin-bottom: 2rem;"><div _ngcontent-ng-c3350875783="" class="tabs is-left" style="width: 100%; overflow-x: hidden; margin-bottom: 0px;"><ul _ngcontent-ng-c3350875783="" class="tabs-list" style="width: 100%; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;"><li _ngcontent-ng-c3350875783="" class="tabs-list-item my-active-tab my-active-code-tab" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter bold-font" style="font-size: 16px;">Python</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Java</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C++</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">JavaScript</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">C#</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Go</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Kotlin</span></a></li><li _ngcontent-ng-c3350875783="" class="tabs-list-item" style="margin: 0px;"><a _ngcontent-ng-c3350875783="" role="button" tabindex="0"><span _ngcontent-ng-c3350875783="" class="tab-header font-inter light-text" style="font-size: 16px;">Swift</span></a></li><!-- --></ul></div><div _ngcontent-ng-c3350875783=""><app-code _ngcontent-ng-c3350875783=""><div class="outer-container" style="padding: 0;"><button class="copy-btn has-tooltip-left" data-tooltip="Copy"><fa-icon class="ng-fa-icon"><svg aria-hidden="true" class="svg-inline--fa fa-copy" data-icon="copy" data-prefix="fas" focusable="false" role="img" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z" fill="currentColor"></path></svg></fa-icon></button><pre class="language-python" style="padding: 0px; font-size: 17px;" tabindex="0"><code class="language-python"><span class="token comment"># Definition for singly-linked list.</span>
+<span class="token comment"># class ListNode:</span>
+<span class="token comment">#     def __init__(self, val=0, next=None):</span>
+<span class="token comment">#         self.val = val</span>
+<span class="token comment">#         self.next = next</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">mergeKLists</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> lists<span class="token punctuation">:</span> List<span class="token punctuation">[</span>Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Optional<span class="token punctuation">[</span>ListNode<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> lists <span class="token keyword">or</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lists<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+        <span class="token keyword">while</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lists<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">:</span>
+            mergedLists <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+            <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lists<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number" style="font-size: 17px;">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                l1 <span class="token operator">=</span> lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+                l2 <span class="token operator">=</span> lists<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">]</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number" style="font-size: 17px;">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lists<span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token boolean">None</span>
+                mergedLists<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>mergeList<span class="token punctuation">(</span>l1<span class="token punctuation">,</span> l2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            lists <span class="token operator">=</span> mergedLists
+        <span class="token keyword">return</span> lists<span class="token punctuation">[</span><span class="token number" style="font-size: 17px;">0</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">mergeList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> l1<span class="token punctuation">,</span> l2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        dummy <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        tail <span class="token operator">=</span> dummy
+
+        <span class="token keyword">while</span> l1 <span class="token keyword">and</span> l2<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> l1<span class="token punctuation">.</span>val <span class="token operator">&lt;</span> l2<span class="token punctuation">.</span>val<span class="token punctuation">:</span>
+                tail<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l1
+                l1 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token builtin">next</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                tail<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l2
+                l2 <span class="token operator">=</span> l2<span class="token punctuation">.</span><span class="token builtin">next</span>
+            tail <span class="token operator">=</span> tail<span class="token punctuation">.</span><span class="token builtin">next</span>
+
+        <span class="token keyword">if</span> l1<span class="token punctuation">:</span>
+            tail<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l1
+        <span class="token keyword">if</span> l2<span class="token punctuation">:</span>
+            tail<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> l2
+
+        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span><span class="token builtin">next</span></code></pre></div></app-code><!-- --></div><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div></app-code-tabs><!-- --><!-- --><!-- --><div><h3 id="time--space-complexity">Time &amp; Space Complexity</h3>
+<ul style="font-size: 17px">
+<li>Time complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log k)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></li>
+<li>Space complexity: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(k)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<blockquote>
+<p>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> is the total number of lists and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is the total number of nodes across <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> lists.</p>
+</blockquote>
+</div><!-- --><!-- --><!-- --><!-- --><!-- --></div><!-- --><!-- --></app-article><!-- --><!-- --></div>
