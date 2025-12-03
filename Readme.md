@@ -4,7 +4,11 @@ Generate [Anki](https://apps.ankiweb.net) flashcards for NeetCode 150 problems w
 
 ## Download
 
-Download generated anki deck [Anki-NeetCode](https://raw.githubusercontent.com/krmanik/Anki-NeetCode/refs/heads/main/Anki-NeetCode.apkg)
+Download generated anki deck [Anki-NeetCode](https://github.com/krmanik/Anki-NeetCode/blob/main/Anki-NeetCode.apkg?raw=true)
+
+## Notes
+
+> It is recommended to turn off `Taps` and `Swipes` in AnkiMobile in `Settings -> Review -> Taps / Swipes`
 
 ## Features
 
@@ -13,6 +17,32 @@ Download generated anki deck [Anki-NeetCode](https://raw.githubusercontent.com/k
 - **Code Editor**: Interactive Python code editor powered by Pyodide (runs in Anki)
 - **Premium Problems**: Includes some LeetCode Premium questions from community sources
 - **Organized Decks**: Questions grouped into topic-based subdecks
+
+## Usage
+
+1. Use `power` button to load `pyodide` in reviewer
+2. Use `play` button to run the code
+
+![](imgs/editor.png)
+
+
+## Images
+
+### AnkiMobile
+
+|           front            |           back           |
+| :------------------------: | :----------------------: |
+| ![front](imgs/ankimobile-front.png) | ![back](imgs/ankimobile-back.png) |
+
+
+### Anki
+
+|           front            |           back           |
+| :------------------------: | :----------------------: |
+| ![front](imgs/anki-front.png) | ![back](imgs/anki-back.png) |
+
+
+# Create your own deck
 
 ## Installation
 
@@ -155,3 +185,4 @@ Anki - NeetCode/
 - [Complete LeetCode Premium Problems](https://github.com/AkashSingh3031/Complete-LeetCode-Premium-Problems) - Premium problem descriptions
 - [LeetCode-Anki](https://github.com/Peng-YM/LeetCode-Anki) - Card Templates
 - [pyodide](https://github.com/pyodide/pyodide) - Python in browser
+- [pycodeditor](https://github.com/krmanik/pycodeditor) - Python Code Web Editor using [CodeMirror](https://github.com/codemirror/codemirror5)
