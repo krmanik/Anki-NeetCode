@@ -59,10 +59,14 @@
 {{Solution}}
 
 <script>
-    if (Persistence.isAvailable()) {
-        var data = Persistence.getItem(`{{TitleSlug}}`)
-        if (data) {
-            codeWindow.setValue(data)
+    setTimeout(() => {
+        codeWindow.refresh()
+        outputWindow.refresh()
+        if (Persistence.isAvailable()) {
+            var data = Persistence.getItem(`{{TitleSlug}}`)
+            if (data) {
+                codeWindow.setValue(data)
+            }
         }
-    }
+    }, 20)
 </script>

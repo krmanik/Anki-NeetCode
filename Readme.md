@@ -2,6 +2,10 @@
 
 Generate [Anki](https://apps.ankiweb.net) flashcards for NeetCode 150 problems with LeetCode questions and NeetCode solutions.
 
+## Download
+
+Download generated anki deck [Anki-NeetCode](https://raw.githubusercontent.com/krmanik/Anki-NeetCode/refs/heads/main/Anki-NeetCode.apkg)
+
 ## Features
 
 - **150 LeetCode Problems**: Organized by topic from NeetCode's curated list
@@ -149,3 +153,5 @@ Anki - NeetCode/
 - [NeetCode](https://neetcode.io/) - Problem list and solutions
 - [LeetCode](https://leetcode.com/) - Problem descriptions
 - [Complete LeetCode Premium Problems](https://github.com/AkashSingh3031/Complete-LeetCode-Premium-Problems) - Premium problem descriptions
+- [LeetCode-Anki](https://github.com/Peng-YM/LeetCode-Anki) - Card Templates
+- [pyodide](https://github.com/pyodide/pyodide) - Python in browser

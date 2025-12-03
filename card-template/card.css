@@ -1,3 +1,8 @@
+@import url("_atom-one-dark.min.css");
+@import url("_codemirror.css");
+@import url("_nord.css");
+@import url("_katex.css");
+
 .card {
     font-size: 14px;
     font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", "Noto Sans", sans-serif;
@@ -14,6 +19,10 @@
         background-color: #ffffff12;
         border-color: #f7faff1f;
         color: #eff1f6;
+    }
+
+    .example-block {
+        color: #fff9;
     }
 
 }
@@ -86,7 +95,6 @@ table td {
 
 .coditer-content {
     margin: 2px;
-    border: 1px solid;
 }
 
 .editor-title {
@@ -95,6 +103,11 @@ table td {
     color: white;
     background: #262626;
     padding: 8px;
+    border-radius: 6px 6px 0 0;
+}
+
+.CodeMirror {
+    border-radius: 0 0 6px 6px;
 }
 
 .editor-buttons {
@@ -102,7 +115,7 @@ table td {
 }
 
 .start-button {
-    color: #F44336;
+    color: #FF7043;
     padding: 2px;
     border-radius: 6px;
 }
@@ -112,7 +125,7 @@ code {
     border-color: #0000000d;
     border-radius: 5px;
     border-width: 1px;
-    color: #262626bf;
+    color: #262626;
     font-family: Menlo, sans-serif;
     font-size: .75rem;
     line-height: 1rem;
@@ -123,7 +136,6 @@ code {
 .example-block {
     border-color: #ffffff24;
     border-left-width: 2px;
-    color: #fff9;
     font-size: 14px;
     margin-bottom: 1rem;
     margin-top: 1rem;
@@ -134,4 +146,49 @@ code {
 .example-block .example-io {
     font-family: Menlo, sans-serif;
     font-size: .85rem;
+}
+
+
+/* Material Icon Font */
+
+/* fallback */
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    src: url(_Material_Symbols_Outlined.woff2) format('woff2');
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.loading {
+    -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
+
+pre, code {
+    white-space: pre;
 }

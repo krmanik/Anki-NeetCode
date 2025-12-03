@@ -1,21 +1,86 @@
-<link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/atom-one-dark.min.css">
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/python.min.js"></script>
-<script>hljs.highlightAll();</script>
+<script>
+    // AnkiMobile fix
+    console.warn = console.error = console.log
 
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/lib/codemirror.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/theme/nord.css">
-<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/lib/codemirror.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/mode/python/python.js"></script>
-<script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
+    var codeWindow;
+    var outputWindow;
+    var pyodide;
+    var expandedCodeWindow = false;
+    var expandedOutWindow = false;
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css"
-    integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js"
-    integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ"
-    crossorigin="anonymous"></script>
+    function decodeHtml(html) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
+
+    var codeSnippets = decodeHtml(`{{CodeSnippets}}`);
+
+    var injectScript = (src) => {
+        return new Promise((resolve, reject) => {
+            // Check if script already exists
+            const existingScript = document.querySelector(`script[src="${src}"]`);
+            if (existingScript) {
+                resolve();
+                return;
+            }
+
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+        });
+    };
+
+    async function load() {
+        await injectScript('_codemirror.js');
+        await injectScript('_python-codemirror.js');
+        await injectScript('_pyodide.js');
+        await injectScript('_katex.min.js');
+        await injectScript('_highlight.min.js');
+        await injectScript('_python.min.js');
+    }
+
+    function setup() {
+        hljs.highlightAll();
+
+        codeWindow = CodeMirror(document.getElementById('code_window'), {
+            lineNumbers: true,
+            tabSize: 2,
+            value: codeSnippets,
+            mode: 'python',
+            theme: 'nord'
+        });
+
+        outputWindow = CodeMirror(document.getElementById('output_window'), {
+            lineNumbers: false,
+            tabSize: 2,
+            value: '',
+            mode: 'python',
+            theme: 'nord',
+        });
+
+        outputWindow.setSize(null, 100);
+
+        if (Persistence.isAvailable()) {
+            codeWindow.on("change", function (instance, changeObj) {
+                var data = Persistence.setItem(`{{TitleSlug}}`, codeWindow.getValue())
+            });
+        }
+    }
+
+    load().then(() => {
+        setup()
+
+        setTimeout(() => {
+            codeWindow.refresh()
+            outputWindow.refresh()
+        }, 30)
+
+    })
+</script>
 
 <script>
     function expandTags() {
@@ -103,11 +168,15 @@
             <div class="editor-title">
                 Code
                 <span class="editor-buttons">
-                    <span id="loading_icon" style="display: none;"><i class="fa fa-spinner fa-spin"
-                            style="color: #4caf50;"></i></span>
-                    <span onclick="runCode();"><i class="fa fa-play" style="color: #4caf50;"></i></span>
-                    <span onclick="loadPyodideInBrowser();" class="start-button" id="start_button"><i
-                            class="fa fa-power-off"></i></span>
+                    <span id="loading_icon" style="display: none;"><i class="material-symbols-outlined loading"
+                            style="color: #4caf50;">progress_activity</i></span>
+                    <span onclick="runCode();"><i class="material-symbols-outlined"
+                            style="color: #4caf50;">play_circle</i></span>
+                    <span onclick="expandCodeWindow();" class="expand-button" id="expand_button"><i
+                            class="material-symbols-outlined">expansion_panels</i></span>
+                    <span onclick="loadPyodideInBrowser();" class="start-button" id="start_button">
+                        <i class="material-symbols-outlined">power_settings_circle</i>
+                    </span>
                 </span>
             </div>
             <div id="code_window"></div>
@@ -116,7 +185,10 @@
         <div class="coditer-content">
             <div class="editor-title">Output
                 <span class="editor-buttons">
-                    <span><i class="fa fa-trash"></i></span>
+                    <span onclick="expandOutputWindow();"><i
+                            class="material-symbols-outlined">expansion_panels</i></span>
+                    <span onclick="clearConsole();" class="clear-button" id="clear_button"><i
+                            class="material-symbols-outlined">delete</i></span>
                 </span>
             </div>
             <div id="output_window"></div>
@@ -128,33 +200,6 @@
 {{Hints}}
 
 <script>
-    function decodeHtml(html) {
-        var txt = document.createElement("textarea");
-        txt.innerHTML = html;
-        return txt.value;
-    }
-
-    var codeSnippets = decodeHtml(`{{CodeSnippets}}`);
-
-    var codeWindow = CodeMirror(document.getElementById('code_window'), {
-        lineNumbers: true,
-        tabSize: 2,
-        value: codeSnippets,
-        mode: 'python',
-        theme: 'nord'
-    });
-
-    var outputWindow = CodeMirror(document.getElementById('output_window'), {
-        lineNumbers: false,
-        tabSize: 2,
-        value: '',
-        mode: 'python',
-        theme: 'nord',
-    });
-
-    outputWindow.setSize(null, 100);
-
-    var pyodide;
     var connectBtn = document.getElementById("start_button")
 
     async function main() {
@@ -166,7 +211,7 @@
         loadingIcon.style.display = "unset";
 
         window.pyodide = await loadPyodide({
-            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/",
+            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/",
             stdin: window.prompt,
             stdout: (text) => {
                 var currentValue = outputWindow.getValue();
@@ -193,16 +238,37 @@
     }
 
     function runCode() {
-        code = codeWindow.getValue();
-        var codeToRun = 'from typing import *\n' + code
-        window.pyodide.runPython(codeToRun);
-    }
-</script>
+        clearConsole();
 
-<script>
-    if (Persistence.isAvailable()) {
-        codeWindow.on("change", function (instance, changeObj) {
-            var data = Persistence.setItem(`{{TitleSlug}}`, codeWindow.getValue())
-        });
+        if (!window.pyodide) {
+            outputWindow.setValue("Please start Pyodide first by clicking the power button.");
+            return;
+        }
+
+        try {
+            code = codeWindow.getValue();
+            var codeToRun = 'from typing import *\n' + code
+            window.pyodide.runPython(codeToRun);
+        } catch (err) {
+            var currentValue = outputWindow.getValue();
+            outputWindow.setValue(currentValue + String(err) + '\n');
+            expandOutputWindow()
+        }
+    }
+
+    function clearConsole() {
+        outputWindow.setValue("")
+    }
+
+    function expandCodeWindow() {
+        expandedCodeWindow = !expandedCodeWindow;
+        var expandedCodeValue = expandedCodeWindow ? 500 : 300;
+        codeWindow.setSize(null, expandedCodeValue);
+    }
+
+    function expandOutputWindow() {
+        expandedOutWindow = !expandedOutWindow;
+        var expandedOutValue = expandedOutWindow ? 360 : 100;
+        outputWindow.setSize(null, expandedOutValue);
     }
 </script>
