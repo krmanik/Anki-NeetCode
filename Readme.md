@@ -4,7 +4,9 @@ Generate [Anki](https://apps.ankiweb.net) flashcards for NeetCode 150 problems w
 
 ## Download
 
-Download generated anki deck [Anki-NeetCode](https://github.com/krmanik/Anki-NeetCode/blob/main/Anki-NeetCode.apkg?raw=true)
+Download generated anki deck:
+- [Anki-NeetCode](https://github.com/krmanik/Anki-NeetCode/blob/main/Anki-NeetCode.apkg?raw=true) - Standard deck with solutions
+- [Anki-NeetCode-Pro](https://github.com/krmanik/Anki-NeetCode/blob/main/Anki-NeetCode-Pro.apkg?raw=true) - Pro deck with test cases and test runner
 
 ## Notes
 
@@ -15,6 +17,7 @@ Download generated anki deck [Anki-NeetCode](https://github.com/krmanik/Anki-Nee
 - **150 LeetCode Problems**: Organized by topic from NeetCode's curated list
 - **Detailed Solutions**: NeetCode video explanations embedded in cards
 - **Code Editor**: Interactive Python code editor powered by Pyodide (runs in Anki)
+- **Test Runner (Pro)**: Automated test cases with detailed feedback on pass/fail results
 - **Premium Problems**: Includes some LeetCode Premium questions from community sources
 - **Organized Decks**: Questions grouped into topic-based subdecks
 
@@ -22,6 +25,7 @@ Download generated anki deck [Anki-NeetCode](https://github.com/krmanik/Anki-Nee
 
 1. Use `power` button to load `pyodide` in reviewer
 2. Use `play` button to run the code
+3. Use `test` button (Pro deck only) to run test cases and validate your solution
 
 ![](imgs/editor.png)
 
@@ -182,6 +186,7 @@ Anki - NeetCode/
 - **Front**: Problem description, hints (collapsible), code editor with starter code
 - **Back**: NeetCode solution (video + code walkthrough)
 - **Code Editor**: Run Python code directly in Anki using Pyodide
+- **Test Runner (Pro)**: Automated test execution with detailed pass/fail feedback and input/output comparison
 - **Tags**: Automatically tagged by topic (array, hash-table, etc.)
 
 ## Credits
@@ -192,3 +197,4 @@ Anki - NeetCode/
 - [LeetCode-Anki](https://github.com/Peng-YM/LeetCode-Anki) - Card Templates
 - [pyodide](https://github.com/pyodide/pyodide) - Python in browser
 - [pycodeditor](https://github.com/krmanik/pycodeditor) - Python Code Web Editor using [CodeMirror](https://github.com/codemirror/codemirror5)
+- [LeetCodeDataset-v0.3.1-train](https://github.com/newfacade/LeetCodeDataset) - LeetCode Training and Evaluation Dataset
