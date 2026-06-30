@@ -14,6 +14,17 @@
         return txt.value;
     }
 
+    // TestCode is kept as plain, editable Python inside a hidden
+    // <script type="text/x-python"> element (a raw-text element), so backslashes,
+    // <, >, & and quotes in the test data survive verbatim — unlike a JS template
+    // literal, which eats backslashes. Read its raw text and decode any HTML
+    // entities Anki may have introduced while editing the field.
+    function readPyField(id) {
+        var el = document.getElementById(id);
+        if (!el) return "";
+        return decodeHtml(el.textContent || "");
+    }
+
     var codeSnippets = decodeHtml(`{{CodeSnippets}}`);
 
     var injectScript = (src) => {
@@ -129,6 +140,9 @@
 <div id="tags"></div>
 <a class="btn tag-btn" href="#" onclick="expandTags()" id="hidden-tags">Tags</a>
 {{/Tags}}
+
+<!-- Editable test cases (plain Python). Edit the TestCode field to add/change tests. -->
+<script type="text/x-python" id="testCodeData">{{TestCode}}</script>
 
 {{Description}}
 
@@ -311,9 +325,22 @@ def check(candidate):
             code = codeWindow.getValue();
 
             var prompt = decodeHtml(`{{Prompt}}`);
-            var testCode = decodeHtml(`{{TestCode}}`);
+            var testCode = readPyField('testCodeData');
             var entryPoints = decodeHtml(`{{EntryPoint}}`);
-            var entryCode = `check(${entryPoints})\n`;
+            // Resolve the candidate by the dataset entry point, but fall back to the
+            // sole public method on Solution if the user renamed it (e.g. NeetCode's
+            // hasDuplicate vs LeetCode's containsDuplicate).
+            var entryCode = `
+try:
+    _candidate = ${entryPoints}
+except AttributeError:
+    _sol = Solution()
+    _methods = [m for m in dir(_sol) if not m.startswith('_') and callable(getattr(_sol, m))]
+    if len(_methods) != 1:
+        raise
+    _candidate = getattr(_sol, _methods[0])
+check(_candidate)
+`;
 
             var codeToRun = prompt + pythonCodeTestCaseRunner + code + testCode + entryCode;
             window.pyodide.runPython(codeToRun);
