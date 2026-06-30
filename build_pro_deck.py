@@ -37,11 +37,119 @@ paidOnly = ['alien-dictionary', 'encode-and-decode-strings', 'graph-valid-tree',
 # (front-pro.html) reads it from a hidden <script type="text/x-python"> element, so
 # arbitrary characters (backslashes, <, >, &, quotes) survive verbatim and users
 # can still read / edit / add test cases directly in the TestCode field.
+#
+# Some problems accept MULTIPLE valid answers (the dataset inputs don't satisfy the
+# "unique solution" guarantee) or return collections whose order is irrelevant. For
+# those, exact `==` against the single reference output wrongly fails a correct
+# solution. We rewrite their asserts to use a tolerant comparison:
+#   'outer'       - top-level list order irrelevant (multiset); inner order kept
+#   'outer_inner' - top-level and each nested list order irrelevant (multiset)
+#   'two_sum_0' / 'two_sum_1' - validate returned indices sum to target (0/1-indexed)
+COMPARE_MODES = {
+    'two-sum': 'two_sum_0',
+    'two-sum-ii-input-array-is-sorted': 'two_sum_1',
+    'subsets': 'outer_inner',
+    'subsets-ii': 'outer_inner',
+    'combination-sum': 'outer_inner',
+    'combination-sum-ii': 'outer_inner',
+    '3sum': 'outer_inner',
+    'group-anagrams': 'outer_inner',
+    'permutations': 'outer',
+    'palindrome-partitioning': 'outer',
+    'generate-parentheses': 'outer',
+    'letter-combinations-of-a-phone-number': 'outer',
+    'word-search-ii': 'outer',
+    'n-queens': 'outer',
+    'top-k-frequent-elements': 'outer',
+    'pacific-atlantic-water-flow': 'outer',
+}
+
+COMPARE_HELPERS = (
+    "def _sk(o):\n"
+    "    return (type(o).__name__, repr(o))\n"
+    "def _canon(x, deep):\n"
+    "    if isinstance(x, (list, tuple)):\n"
+    "        e = [_canon(i, deep) for i in x]\n"
+    "        if deep:\n"
+    "            e = sorted(e, key=_sk)\n"
+    "        return tuple(e)\n"
+    "    return x\n"
+    "def _eq_outer(a, b):\n"
+    "    if a is None or b is None:\n"
+    "        return a == b\n"
+    "    return sorted((_canon(x, False) for x in a), key=_sk) == sorted((_canon(x, False) for x in b), key=_sk)\n"
+    "def _eq_outer_inner(a, b):\n"
+    "    if a is None or b is None:\n"
+    "        return a == b\n"
+    "    return sorted((_canon(x, True) for x in a), key=_sk) == sorted((_canon(x, True) for x in b), key=_sk)\n"
+    "def _valid_two_sum(res, arr, target, one_indexed, expected):\n"
+    "    if expected is None:\n"
+    "        return res is None or res == [] or res == ()\n"
+    "    if not res or len(res) != 2:\n"
+    "        return False\n"
+    "    off = 1 if one_indexed else 0\n"
+    "    i, j = res[0] - off, res[1] - off\n"
+    "    n = len(arr)\n"
+    "    if not (0 <= i < n and 0 <= j < n and i != j):\n"
+    "        return False\n"
+    "    return arr[i] + arr[j] == target\n\n"
+)
+
+
+import copy as _copy
+
+
+def _to_positional(call):
+    """candidate(a=x, b=y) -> candidate(x, y) so any param naming works."""
+    if call.keywords:
+        call.args = list(call.args) + [k.value for k in call.keywords]
+        call.keywords = []
+
+
+class _PosCall(ast.NodeTransformer):
+    def visit_Call(self, n):
+        self.generic_visit(n)
+        if isinstance(n.func, ast.Name) and n.func.id == 'candidate':
+            _to_positional(n)
+        return n
+
+
+def _rewrite_assert(test_src, node, mode):
+    """Return tolerant, positional-call source for one assert statement.
+
+    Always converts candidate(kw=...) calls to positional so solutions with
+    different parameter names (NeetCode vs LeetCode) still run. For flagged
+    problems also swaps exact `==` for an order-insensitive / semantic check.
+    """
+    node = _copy.deepcopy(node)
+    cmp = node.test
+    is_eq_call = (isinstance(cmp, ast.Compare) and len(cmp.ops) == 1
+                  and isinstance(cmp.ops[0], ast.Eq) and isinstance(cmp.left, ast.Call)
+                  and isinstance(cmp.left.func, ast.Name) and cmp.left.func.id == 'candidate')
+    if is_eq_call and mode in ('two_sum_0', 'two_sum_1'):
+        kw = {k.arg: k.value for k in cmp.left.keywords}
+        target_node = kw.get('target')
+        arr_node = next(v for a, v in kw.items() if a != 'target')
+        _to_positional(cmp.left)
+        one = 'True' if mode == 'two_sum_1' else 'False'
+        return (f"assert _valid_two_sum({ast.unparse(cmp.left)}, {ast.unparse(arr_node)}, "
+                f"{ast.unparse(target_node)}, {one}, {ast.unparse(cmp.comparators[0])})")
+    if is_eq_call and mode in ('outer', 'outer_inner'):
+        _to_positional(cmp.left)
+        fn = '_eq_outer' if mode == 'outer' else '_eq_outer_inner'
+        return f"assert {fn}({ast.unparse(cmp.left)}, {ast.unparse(cmp.comparators[0])})"
+    return ast.unparse(_PosCall().visit(node))
+
+
 def build_test_code(slug, test_src):
     tree = ast.parse(test_src)
     fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'check')
-    lines = [ast.get_source_segment(test_src, st) for st in fn.body if isinstance(st, ast.Assert)]
-    body = "# Test cases for %s\n_test_lines = [\n" % slug
+    mode = COMPARE_MODES.get(slug)
+    lines = [_rewrite_assert(test_src, st, mode) for st in fn.body if isinstance(st, ast.Assert)]
+    body = "# Test cases for %s\n" % slug
+    if mode:
+        body += COMPARE_HELPERS
+    body += "_test_lines = [\n"
     for seg in lines:
         body += "    %r,\n" % seg
     body += "]\n\n"

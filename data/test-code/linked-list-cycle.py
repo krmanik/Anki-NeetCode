@@ -87,12 +87,12 @@ def is_same_tree(p, q):
 
 # Test cases for linked-list-cycle
 _test_lines = [
-    'assert candidate(head = list_node([1, 2])) == False',
-    'assert candidate(head = list_node([1])) == False',
-    'assert candidate(head = list_node([])) == False',
-    'assert candidate(head = list_node([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1])) == False',
-    'assert candidate(head = list_node([3, 2, 0, -4])) == False',
-    'assert candidate(head = list_node([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])) == False',
+    'assert candidate(list_node([1, 2])) == False',
+    'assert candidate(list_node([1])) == False',
+    'assert candidate(list_node([])) == False',
+    'assert candidate(list_node([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1])) == False',
+    'assert candidate(list_node([3, 2, 0, -4])) == False',
+    'assert candidate(list_node([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])) == False',
 ]
 
 def check(candidate):

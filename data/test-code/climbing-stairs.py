@@ -84,22 +84,22 @@ def is_same_tree(p, q):
 
 # Test cases for climbing-stairs
 _test_lines = [
-    'assert candidate(n = 3) == 3',
-    'assert candidate(n = 45) == 1836311903',
-    'assert candidate(n = 4) == 5',
-    'assert candidate(n = 20) == 10946',
-    'assert candidate(n = 2) == 2',
-    'assert candidate(n = 1) == 1',
-    'assert candidate(n = 10) == 89',
-    'assert candidate(n = 5) == 8',
-    'assert candidate(n = 30) == 1346269',
-    'assert candidate(n = 15) == 987',
-    'assert candidate(n = 40) == 165580141',
-    'assert candidate(n = 12) == 233',
-    'assert candidate(n = 35) == 14930352',
-    'assert candidate(n = 18) == 4181',
-    'assert candidate(n = 7) == 21',
-    'assert candidate(n = 25) == 121393',
+    'assert candidate(3) == 3',
+    'assert candidate(45) == 1836311903',
+    'assert candidate(4) == 5',
+    'assert candidate(20) == 10946',
+    'assert candidate(2) == 2',
+    'assert candidate(1) == 1',
+    'assert candidate(10) == 89',
+    'assert candidate(5) == 8',
+    'assert candidate(30) == 1346269',
+    'assert candidate(15) == 987',
+    'assert candidate(40) == 165580141',
+    'assert candidate(12) == 233',
+    'assert candidate(35) == 14930352',
+    'assert candidate(18) == 4181',
+    'assert candidate(7) == 21',
+    'assert candidate(25) == 121393',
 ]
 
 def check(candidate):

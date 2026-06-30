@@ -48,9 +48,9 @@ def is_same_list(p1, p2):
 
 # Test cases for merge-k-sorted-lists
 _test_lines = [
-    'assert candidate(lists = []) == None',
-    'assert candidate(lists = [[],[],[],[]]) == None',
-    'assert candidate(lists = [[]]) == None',
+    'assert candidate([]) == None',
+    'assert candidate([[], [], [], []]) == None',
+    'assert candidate([[]]) == None',
 ]
 
 def check(candidate):

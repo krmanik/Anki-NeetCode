@@ -25,8 +25,8 @@ inf = float('inf')
 
 # Test cases for valid-palindrome
 _test_lines = [
-    'assert candidate(s = "race a car") == False',
-    'assert candidate(s = " ") == True',
+    "assert candidate('race a car') == False",
+    "assert candidate(' ') == True",
 ]
 
 def check(candidate):
